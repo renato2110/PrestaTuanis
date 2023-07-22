@@ -7,6 +7,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ButtonComponent } from './components/button/button.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { InputComponent } from "./components/input/input.component";
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ModalComponent } from './components/modal/modal.component';
     ToolbarComponent,
     FooterComponent,
     ButtonComponent,
-    ModalComponent
+    ModalComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule,

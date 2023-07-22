@@ -1,6 +1,6 @@
 <app-toolbar></app-toolbar>
 
-<app-modal 
+<app-modal
 [header]="'Éxito!'"
 [title]="'Los detalles de su perfil han sido actualizados con éxito'"
 [content]="'Como ha actualizado todos los campos. Es elegible para  crear solicitudes de préstamo.'"
@@ -12,6 +12,10 @@
 <app-button [text]="'Secondary'" [primary]="false"></app-button>
 <app-button [text]="'Underline'" [primary]="true" [underline]="true"></app-button>
 <app-button [text]="'Underline'" [primary]="false" [underline]="true"></app-button>
+
+<app-input [label]="'Título'" [placeholder]="'Introduzca su título'">></app-input>
+<app-input [label]="'Título 2'" [placeholder]="'Introduzca su título'">></app-input>
+<app-input [label]="'Título 3'" [placeholder]="'Introduzca su título'">></app-input>
 
 <app-footer></app-footer>
 <router-outlet></router-outlet>

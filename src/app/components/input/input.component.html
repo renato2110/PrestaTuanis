@@ -1,0 +1,9 @@
+<div class="input-field">
+  <label [ngClass]="{'active': active}">{{label}}</label>
+  <input type="text"
+         [ngClass]="{'active': active}"
+         [value]="value"
+         [placeholder]="placeholder"
+         (focus)="activate()"
+         (blur)="deactivate()">
+</div>
