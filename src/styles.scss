@@ -1,1 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+    --light-primary: #F1A340;
+    --dark-primary: #E66001;
+    --light-secondary: #998EC3;
+    --dark-secondary: #5E3C99;
+    --placeholder: #B9B9B9;
+
+    --background: #F7F7F7;
+
+    --primary-text: #000;
+    --secondary-text: #fff;
+    --font-family: Roboto, sans-serif;
+    --letter-spacing: 0.75px;
+
+    --thin-border: 1px solid var(--primary-text);
+    --thick-border: 2px solid var(--primary-text);
+    --shadow: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+    * {
+        color: var(--primary-text);
+        font-family: var(--font-family);
+        letter-spacing: var(--letter-spacing);
+        font-size: 16px;
+    }
+
+    body {
+        background-color: var(--secondary-text);
+        margin: 0px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    h3, button {
+        font-size: 20px;
+    }
+
+    a {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    .secondary-text {
+        color: var(--dark-primary);
+    }
+}

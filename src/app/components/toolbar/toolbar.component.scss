@@ -1,0 +1,19 @@
+
+.toolbar {
+    align-items: center;
+    background-color: var(--light-secondary);
+    border: var(--thin-border);
+    display: flex;
+    filter: var(--shadow);
+    padding: 8px 16px;
+
+    &-img {
+        width: 40px;
+    }
+
+    &-title {
+        font-weight: 700;
+        font-size: 40px;
+        margin: auto;
+    }
+}
