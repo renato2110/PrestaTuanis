@@ -1,0 +1,10 @@
+<div class="radio-field">
+  <p>{{label}}</p>
+  <div *ngFor="let option of options; let i = index" class="option">
+    <input type="radio" [value]="option"
+           [name]="name"
+           [id]="name + i"
+           [(ngModel)]="selectedOption">
+    <label [for]="name + i">{{option}}</label>
+  </div>
+</div>
