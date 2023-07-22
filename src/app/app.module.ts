@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ButtonComponent } from './components/button/button.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
     FooterComponent,
-    ButtonComponent
+    ButtonComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

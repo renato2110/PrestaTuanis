@@ -1,4 +1,5 @@
 
-<button [ngClass]="primary ? 'primary-button' : 'secondary-button'">
-    {{text}}
+<button 
+    [ngClass]="primary ? 'primary-button' : 'secondary-button'"
+    [ngStyle]="{'text-decoration': (underline) ? 'underline' : 'none'}">{{text}}
 </button>
