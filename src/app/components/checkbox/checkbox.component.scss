@@ -1,0 +1,43 @@
+.checkbox-field {
+  display: flex;
+  align-items: center;
+
+  &.right {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+
+  & label {
+    font-family: var(--font-family);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--primary-text);
+    margin: 0 8px;
+  }
+
+  & input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    background-color: var(--background);
+    border: var(--thick-border);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 12px;
+      height: 12px;
+      margin: 2px;
+      background-color: var(--light-primary);
+      visibility: hidden;
+    }
+
+    &.active::after {
+      visibility: visible;
+    }
+  }
+}

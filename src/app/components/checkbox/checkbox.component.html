@@ -1,0 +1,6 @@
+<div class="checkbox-field" [ngClass]="{'right': right}">
+  <input type="checkbox" id="checkbox"
+         [ngClass]="{'active': active}"
+         (change)="toggleActive()">
+  <label for="checkbox">{{label}}</label>
+</div>

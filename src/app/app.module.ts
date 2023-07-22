@@ -8,6 +8,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ButtonComponent } from './components/button/button.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { InputComponent } from "./components/input/input.component";
+import { CheckboxComponent } from "./components/checkbox/checkbox.component";
+import { RadioComponent } from "./components/radio/radio.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -16,11 +19,14 @@ import { InputComponent } from "./components/input/input.component";
     FooterComponent,
     ButtonComponent,
     ModalComponent,
-    InputComponent
+    InputComponent,
+    CheckboxComponent,
+    RadioComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
