@@ -1,14 +1,33 @@
-
-
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
-  <a class="toolbar-link">
-    Ayuda
-  </a>
-  <a class="toolbar-link" [routerLink]="['/sign-up']">
-    Registrarse
-  </a>
+  <img
+    class="toolbar-img"
+    alt="PrestaTuanis Logo"
+    src="../../../favicon.ico"
+  />
+  <span class="toolbar-title">
+    PrestaTuanis
+  </span>
+
+  <ng-container *ngIf="!authenticated; else authenticatedMenu">
+    <a class="toolbar-link" [routerLink]="['/registration']">
+      Registrarse
+    </a>
+  </ng-container>
+
+  <ng-template #authenticatedMenu>
+    <button class="hamburger-menu" (click)="toggleMenu()">☰</button>
+
+    <div class="menu-overlay" *ngIf="menuOpen">
+      <a [routerLink]="['/perfil-prestamista']" (click)="toggleMenu()">Mi Perfil</a>
+      <!--      Añadir logica para que estos no esten y cuando !authenticated si esten-->
+      <a [routerLink]="['/sign-up']" (click)="toggleMenu()">Registrarse (temp)</a>
+      <a [routerLink]="['/login']" (click)="toggleMenu()">Login (temp)</a>
+      <!--     Falta crearlos -->
+      <a [routerLink]="['/buscar-prestamo']" (click)="toggleMenu()">Buscar Préstamo</a>
+      <a [routerLink]="['/crear-prestamo']" (click)="toggleMenu()">Crear Préstamo</a>
+      <a [routerLink]="['/ayuda']" (click)="toggleMenu()">Soporte al cliente</a>
+      <a (click)="logout()">Cerrar Sesión</a>
+    </div>
+  </ng-template>
 </div>
-<span class="toolbar-title">
-  PrestaTuanis
-</span>

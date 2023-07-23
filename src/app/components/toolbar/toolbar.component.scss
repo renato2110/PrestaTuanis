@@ -1,29 +1,60 @@
 
 .toolbar {
-    align-items: center;
-    background-color: var(--light-secondary);
-    border: var(--thin-border);
-    box-shadow: var(--shadow);
-    display: flex;
-    padding: 8px 16px;
-    margin-bottom: 3em;
-    height: 56px;
-    justify-content: space-between;
+  position: relative; /* Add this */
+  align-items: center;
+  background-color: var(--light-secondary);
+  border: var(--thin-border);
+  box-shadow: var(--shadow);
+  display: flex;
+  padding: 8px 16px;
+  margin-bottom: 3em;
 
-    &-img {
-        width: 40px;
-    }
-}
+  &-img {
+    width: 40px;
+  }
 
-
-.toolbar-title {
+  &-title {
     font-weight: 700;
     font-size: 40px;
-    margin: 0 auto;
+    margin: auto;
+  }
+
+  .hamburger-menu {
+    color: var(--dark-secondary);
+    background: none;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+  }
+
+  .menu-overlay {
     position: absolute;
-    top: 13px;
     right: 0;
-    text-align: center;
-    left: 0;
-    width: fit-content;
+    top: 100%;
+    background-color: var(--dark-secondary);
+    width: 21em; /* Adjust as needed */
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2em;
+    color: white;
+
+    a {
+      text-decoration: none;
+      color: white;
+      padding: 1em;
+      border: 1px solid white;
+      width: 20em;
+      text-align: center;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background: white;
+        color: var(--dark-secondary);
+      }
+    }
+  }
 }
