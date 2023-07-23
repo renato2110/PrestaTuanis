@@ -4,6 +4,12 @@
   align-content: space-evenly;
 }
 
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .profile {
   width: 65%;
 }

@@ -15,6 +15,7 @@ import { LoginComponent } from "./screens/login/login.component";
 import { SignUpComponent } from './screens/sign-up/sign-up.component';
 import { ProfileComponent } from "./screens/profile/profile.component";
 import { LoanSummaryComponent } from './components/loan-summary/loan-summary.component';
+import { SeleccionarPerfilComponent } from './screens/seleccionar-perfil/seleccionar-perfil.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { LoanSummaryComponent } from './components/loan-summary/loan-summary.com
     LoginComponent,
      SignUpComponent,
     ProfileComponent,
-    LoanSummaryComponent
+    LoanSummaryComponent,
+    SeleccionarPerfilComponent
   ],
   imports: [
     BrowserModule,

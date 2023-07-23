@@ -1,0 +1,8 @@
+<p>
+    {{content}}
+</p>
+
+<div class="button-group">
+    <app-button (click)="loginAsPrestamista()" [text]="'Iniciar sesión como Prestamista'" [primary]="true" [large]="true"></app-button>
+    <app-button (click)="loginAsPrestatario()" [text]="'Iniciar sesión como Prestatario'" [primary]="false" [large]="true"></app-button>
+</div>

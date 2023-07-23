@@ -1,8 +1,8 @@
 <div class="container">
   <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
     <div class="profile">
+      <h1>Perfil de prestamista</h1>
       <div class="input-container">
-        <h2>Perfil de prestamista</h2>
         <app-input formControlName="name" [label]="'Nombre'" [placeholder]="'Introduzca su nombre'" ></app-input>
         <app-input formControlName="email" [label]="'Correo Electronico'" [placeholder]="'Introduzca su correo'" ></app-input>
         <app-input formControlName="phone" [label]="'Numero de Telefono'" [placeholder]="'Introduzca su telefono'" ></app-input>
@@ -17,7 +17,7 @@
   </form>
 
   <div class="loans">
-    <h2>Prestamos financiados</h2>
+    <h1>Prestamos financiados</h1>
     <div class="loan-summaries">
       <app-loan-summary *ngFor="let loan of loans" [title]="loan.title" [loanAmount]="loan.loanAmount" [interestRate]="loan.interestRate"></app-loan-summary>
     </div>

@@ -6,15 +6,24 @@
     box-shadow: var(--shadow);
     display: flex;
     padding: 8px 16px;
-  margin-bottom: 3em;
+    margin-bottom: 3em;
+    height: 56px;
+    justify-content: space-between;
 
     &-img {
         width: 40px;
     }
+}
 
-    &-title {
-        font-weight: 700;
-        font-size: 40px;
-        margin: auto;
-    }
+
+.toolbar-title {
+    font-weight: 700;
+    font-size: 40px;
+    margin: 0 auto;
+    position: absolute;
+    top: 13px;
+    right: 0;
+    text-align: center;
+    left: 0;
+    width: fit-content;
 }
