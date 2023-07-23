@@ -3,15 +3,21 @@
     <div class="profile">
       <h1>Perfil de {{ profileType.toLowerCase() }}</h1>
       <div class="input-container">
-        <app-input formControlName="name" [label]="'Nombre'" [placeholder]="'Introduzca su nombre'" ></app-input>
-        <app-input formControlName="email" [label]="'Correo Electronico'" [placeholder]="'Introduzca su correo'" ></app-input>
-        <app-input formControlName="phone" [label]="'Numero de Telefono'" [placeholder]="'Introduzca su telefono'" ></app-input>
-        <app-input formControlName="id" [label]="'Identificación'" [placeholder]="'Introduzca su identificación'" ></app-input>
-        <app-input  formControlName="address" [label]="'Dirección'" [placeholder]="'Introduzca su dirección'" ></app-input>
-        <app-input *ngIf="profileType === 'Prestatario'" formControlName="companyName" [label]="'Nombre de la empresa'" [placeholder]="'Introduzca el nombre de la empresa'"></app-input>
-        <app-input *ngIf="profileType === 'Prestatario'" formControlName="companyId" [label]="'Cédula Jurídica'" [placeholder]="'Introduzca la cédula jurídica de su empresa'"></app-input>
+        <app-input formControlName="name" [label]="'Nombre'" [placeholder]="'Introduzca su nombre'"></app-input>
+        <app-input formControlName="email" [label]="'Correo Electronico'"
+                   [placeholder]="'Introduzca su correo'"></app-input>
+        <app-input formControlName="phone" [label]="'Numero de Telefono'"
+                   [placeholder]="'Introduzca su telefono'"></app-input>
+        <app-input formControlName="id" [label]="'Identificación'"
+                   [placeholder]="'Introduzca su identificación'"></app-input>
+        <app-input formControlName="address" [label]="'Dirección'"
+                   [placeholder]="'Introduzca su dirección'"></app-input>
+        <app-input *ngIf="profileType === 'Prestatario'" formControlName="companyName" [label]="'Nombre de la empresa'"
+                   [placeholder]="'Introduzca el nombre de la empresa'"></app-input>
+        <app-input *ngIf="profileType === 'Prestatario'" formControlName="companyId" [label]="'Cédula Jurídica'"
+                   [placeholder]="'Introduzca la cédula jurídica de su empresa'"></app-input>
         <div class="button-group">
-          <app-button [text]="'Guardar cambios'" [primary]="true"></app-button>
+          <app-button [text]="'Guardar cambios'" [primary]="true" (click)="onSubmit()"></app-button>
           <p>Todos los campos son requeridos para aplicar a préstamos.</p>
         </div>
       </div>
@@ -21,8 +27,18 @@
   <div class="loans">
     <h1>{{ profileType === PRESTAMISTA ? 'Préstamos financiados' : 'Préstamos solicitados' }}</h1>
     <div class="loan-summaries">
-      <app-loan-summary *ngFor="let loan of loans" [title]="loan.title" [loanAmount]="loan.loanAmount" [interestRate]="loan.interestRate"></app-loan-summary>
+      <app-loan-summary *ngFor="let loan of loans" [title]="loan.title" [loanAmount]="loan.loanAmount"
+                        [interestRate]="loan.interestRate"></app-loan-summary>
     </div>
   </div>
+
+  <app-modal
+    *ngIf="showModal"
+    (onClose)="showModal = false"
+    [header]="'Éxito!'"
+    [title]="'Los detalles de su perfil han sido actualizados con éxito'"
+    [content]="profileType === 'Prestamista' ? 'Como ha actualizado todos los campos. Es elegible para financiar préstamos.' : 'Como ha actualizado todos los campos. Es elegible para crear solicitudes de préstamo.'"
+  ></app-modal>
+
 
 </div>
