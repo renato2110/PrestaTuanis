@@ -1,0 +1,20 @@
+.loan-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  background-color: var(--background);
+  border-radius: 0.5em;
+  width: 40em;
+  margin: 1em;
+}
+
+.loan-info {
+  & h3, & p {
+    margin: 0;
+  }
+}
+
+.loan-details {
+  text-align: right;
+}
