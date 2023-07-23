@@ -3,8 +3,8 @@
     align-items: center;
     background-color: var(--light-secondary);
     border: var(--thin-border);
+    box-shadow: var(--shadow);
     display: flex;
-    filter: var(--shadow);
     padding: 8px 16px;
 
     &-img {
