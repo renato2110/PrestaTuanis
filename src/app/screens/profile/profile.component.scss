@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  padding: 1em;
+  align-content: space-evenly;
+}
+
+.profile {
+  width: 65%;
+}
+
+.loans {
+  width: auto;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  width: 45em;
+  align-items: center;
+  gap: 1em;
+}
+
+.button-group p {
+  flex-grow: 1;
+  text-align: right;
+  margin: 0;
+}
+
+h2 {
+  margin-bottom: 2em;
+}
+
+.loan-summaries {
+  max-height: 500px;
+  overflow-y: auto;
+}
