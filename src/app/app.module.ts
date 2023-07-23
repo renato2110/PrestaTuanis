@@ -13,6 +13,8 @@ import { RadioComponent } from "./components/radio/radio.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { LoginComponent } from "./screens/login/login.component";
 import { SignUpComponent } from './screens/sign-up/sign-up.component';
+import { ProfileComponent } from "./screens/profile/profile.component";
+import { LoanSummaryComponent } from './components/loan-summary/loan-summary.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { SignUpComponent } from './screens/sign-up/sign-up.component';
 
     // Screens o pantallas
     LoginComponent,
-     SignUpComponent
+     SignUpComponent,
+    ProfileComponent,
+    LoanSummaryComponent
   ],
   imports: [
     BrowserModule,
