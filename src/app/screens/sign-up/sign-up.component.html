@@ -1,0 +1,11 @@
+<div class="container" [formGroup]="signUpForm">
+    <app-input formControlName="name" [label]="'Nombre completo'" [placeholder]="'Ingrese su nombre completo'"></app-input>
+    <app-input formControlName="email" [label]="'Correo Electrónico'" [placeholder]="'Ingrese su correo electrónico'"></app-input>
+    <app-input formControlName="password" [label]="'Contraseña'" [placeholder]="'Ingrese una contraseña'" [type]="'password'"></app-input>
+    <app-input formControlName="confirmPassword" [label]="'Confirmar Contraseña'" [placeholder]="'Ingrese de nuevo la contraseña'" [type]="'password'"></app-input>
+    <app-radio formControlName="userType" [label]="'Tipo de usuario'"  [options]="['Prestatario', 'Prestamista']">
+    </app-radio>
+    <app-checkbox formControlName="terms" [label]="'Estoy deacuerdo con'" [link]="'los términos y condiciones'"></app-checkbox>
+    <app-button (click)="onSubmit()" [text]="'Crear cuenta'" [primary]="true"></app-button>
+  </div>
+  

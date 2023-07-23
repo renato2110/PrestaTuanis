@@ -14,11 +14,12 @@
     font-size: 16px;
     line-height: 24px;
     color: var(--primary-text);
-    margin: 0 8px;
+    margin: 0 4px;
   }
 
   & input[type="checkbox"] {
     box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
     width: 20px;
     height: 20px;
     background-color: var(--background);
@@ -29,6 +30,7 @@
 
     &::after {
       content: "";
+      border-radius: var(--border-radius);
       display: block;
       width: 12px;
       height: 12px;

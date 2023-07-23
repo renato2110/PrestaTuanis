@@ -1,6 +1,6 @@
 <div class="input-field" [ngClass]="{'active': active}">
-  <input type="text" [value]="value" (input)="updateValue($event)" (focus)="activate()" (blur)="deactivate()">
   <label>{{label}}</label>
+  <input [type]="type" [value]="value" (input)="updateValue($event)" [placeholder]="placeholder" (focus)="activate()" (blur)="deactivate()">
 </div>
 
 

@@ -1,6 +1,6 @@
 <div class="radio-group">
-  <label>{{label}}</label>
-  <div *ngFor="let option of options; let i = index">
+  <label class="radio-group-label">{{label}}</label>
+  <div *ngFor="let option of options; let i = index" class="option">
     <input type="radio"
            [value]="option"
            [checked]="option === selectedOption"

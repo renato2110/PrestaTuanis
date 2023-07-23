@@ -12,6 +12,7 @@ import { CheckboxComponent } from "./components/checkbox/checkbox.component";
 import { RadioComponent } from "./components/radio/radio.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { LoginComponent } from "./screens/login/login.component";
+import { SignUpComponent } from './screens/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { LoginComponent } from "./screens/login/login.component";
     RadioComponent,
 
     // Screens o pantallas
-    LoginComponent
+    LoginComponent,
+     SignUpComponent
   ],
   imports: [
     BrowserModule,

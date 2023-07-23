@@ -1,10 +1,10 @@
 <div class="container" [formGroup]="loginForm">
   <app-input formControlName="email" [label]="'Correo'" [placeholder]="'Introduzca su correo'"></app-input>
-  <app-input formControlName="password" [label]="'Contraseña'" [placeholder]="'Introduzca su contraseña'"></app-input>
+  <app-input formControlName="password" [label]="'Contraseña'" [placeholder]="'Introduzca su contraseña'" [type]="'password'"></app-input>
 
   <app-checkbox formControlName="rememberMe" [label]="'Recordar mi correo'"></app-checkbox>
 
-  <app-button (click)="onSubmit()" [text]="'Iniciar sesión'" [primary]="true"></app-button>
-
-  <a href="#" (click)="forgotPassword()">Olvidé mi contraseña</a>
+  <app-button (click)="onSubmit()" [text]="'Iniciar sesión'" [primary]="true" [large]="true"></app-button>
+  
+  <a (click)="forgotPassword()">Olvidé mi contraseña</a>
 </div>

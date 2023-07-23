@@ -16,6 +16,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl } from '@angular/f
 export class InputComponent implements ControlValueAccessor {
   @Input() label: string = '';
   @Input() placeholder: string = '';
+  @Input() type: string = 'text';
   value: string = '';
   active: boolean = false;
 

@@ -9,12 +9,5 @@ export class ButtonComponent {
   @Input() text: string = '';
   @Input() primary: boolean = false;
   @Input() underline: boolean = false;
-
-  activate() {
-alert('a');
-  }
-
-  deactivate() {
-alert('de');
-  }
+  @Input() large: boolean = false;
 }
