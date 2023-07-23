@@ -1,5 +1,11 @@
 import { Component, ElementRef, HostListener, Input } from '@angular/core';
-import { LOGIN_PATH, PROFILE_PATH, SELECT_PROFILE_PATH, SIGN_UP_PATH } from "../../app-routing.module";
+import {
+  LOGIN_PATH,
+  PRESTAMISTA_PROFILE_PATH,
+  PRESTATARIO_PROFILE_PATH,
+  SELECT_PROFILE_PATH,
+  SIGN_UP_PATH
+} from "../../app-routing.module";
 
 @Component({
   selector: 'app-toolbar',
@@ -30,8 +36,9 @@ export class ToolbarComponent {
     }
   }
 
-  protected readonly PROFILE_PATH = PROFILE_PATH;
   protected readonly SIGN_UP_PATH = SIGN_UP_PATH;
   protected readonly LOGIN_PATH = LOGIN_PATH;
   protected readonly SELECT_PROFILE_PATH = SELECT_PROFILE_PATH;
+  protected readonly PRESTAMISTA_PROFILE_PATH = PRESTAMISTA_PROFILE_PATH;
+  protected readonly PRESTATARIO_PROFILE_PATH = PRESTATARIO_PROFILE_PATH;
 }

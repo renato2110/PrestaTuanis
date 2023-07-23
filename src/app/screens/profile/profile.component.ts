@@ -1,11 +1,17 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PRESTAMISTA } from "../../app-routing.module";
+import { ActivatedRoute } from "@angular/router";
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
+  @Input() profileType: 'Prestamista' | 'Prestatario' = 'Prestamista';
+
+
   loans = [
     { title: 'Préstamo para Capital de Trabajo', loanAmount: 5000, interestRate: 8.2 },
     { title: 'Préstamo para Expansión de Negocio', loanAmount: 8000, interestRate: 7.5 },
@@ -13,34 +19,45 @@ export class ProfileComponent {
     { title: 'Préstamo para Inversión en Tecnología', loanAmount: 6000, interestRate: 5.4 },
     { title: 'Préstamo para Adquisición de Franquicia', loanAmount: 7000, interestRate: 9.1 },
     { title: 'Préstamo para Renovación de Local Comercial', loanAmount: 5500, interestRate: 7.8 },
-    { title: 'Préstamo para Inventario', loanAmount: 4500, interestRate: 6.9 },
-    { title: 'Préstamo para Línea de Crédito', loanAmount: 3000, interestRate: 5.5 },
-    { title: 'Préstamo para Expansión de Negocio', loanAmount: 7500, interestRate: 8.7 },
-    { title: 'Préstamo para Capital de Trabajo', loanAmount: 4000, interestRate: 6.5 },
-    { title: 'Préstamo para Compra de Equipo', loanAmount: 6500, interestRate: 7.2 },
-    { title: 'Préstamo para Inversión en Marketing', loanAmount: 5500, interestRate: 6.8 },
-    { title: 'Préstamo para Adquisición de Franquicia', loanAmount: 9000, interestRate: 9.5 },
-    { title: 'Préstamo para Expansión de Negocio', loanAmount: 8000, interestRate: 8.9 },
-    { title: 'Préstamo para Renovación de Local Comercial', loanAmount: 5200, interestRate: 7.6 },
-    { title: 'Préstamo para Línea de Crédito', loanAmount: 3800, interestRate: 5.9 }
+    { title: 'Préstamo para Compra de Maquinaria', loanAmount: 10000, interestRate: 6.7 },
+    { title: 'Préstamo para Inversión en Tecnología', loanAmount: 6000, interestRate: 5.4 },
+    { title: 'Préstamo para Adquisición de Franquicia', loanAmount: 7000, interestRate: 9.1 },
+    { title: 'Préstamo para Renovación de Local Comercial', loanAmount: 5500, interestRate: 7.8 },
   ];
 
 
   profileForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
-    this.profileForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required],
-      id: ['', Validators.required],
-      address: ['', Validators.required]
+  constructor(private fb: FormBuilder, private route: ActivatedRoute) {
+    this.profileForm = this.fb.group({});
+  }
+
+  ngOnInit() {
+    this.route.data.subscribe(data => {
+      this.profileType = data['profileType'];
+
+      this.profileForm = this.fb.group({
+        name: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        phone: ['', Validators.required],
+        id: ['', Validators.required],
+        address: ['', Validators.required]
+      });
+
+      if (this.profileType === 'Prestatario') {
+        this.profileForm.addControl('companyName', this.fb.control('', Validators.required));
+        this.profileForm.addControl('companyId', this.fb.control('', Validators.required));
+      }
     });
   }
+
+
+
 
   onSubmit() {
     console.log(this.profileForm.value);
   }
 
 
+  protected readonly PRESTAMISTA = PRESTAMISTA;
 }

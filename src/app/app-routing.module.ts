@@ -6,14 +6,20 @@ import { SignUpComponent } from './screens/sign-up/sign-up.component';
 import { SeleccionarPerfilComponent } from './screens/seleccionar-perfil/seleccionar-perfil.component';
 
 export const LOGIN_PATH = 'login';
-export const PROFILE_PATH = 'perfil';
+export const PRESTAMISTA_PROFILE_PATH = 'perfil-prestamista';
+export const PRESTATARIO_PROFILE_PATH = 'perfil-prestatario';
+
 export const SIGN_UP_PATH = 'sign-up';
 export const SELECT_PROFILE_PATH = 'seleccionar-perfil';
+
+export const PRESTAMISTA = 'Prestamista';
+export const PRESTATARIO = 'Prestatario';
 
 const routes: Routes = [
   { path: LOGIN_PATH, component: LoginComponent },
   { path: SIGN_UP_PATH, component: SignUpComponent },
-  { path: PROFILE_PATH, component: ProfileComponent },
+  { path: PRESTAMISTA_PROFILE_PATH, component: ProfileComponent, data: { profileType: PRESTAMISTA } },
+  { path: PRESTATARIO_PROFILE_PATH, component: ProfileComponent, data: { profileType: PRESTATARIO } },
   { path: SELECT_PROFILE_PATH, component: SeleccionarPerfilComponent }
 ];
 

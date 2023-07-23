@@ -16,7 +16,6 @@
 
 .loans {
   width: auto;
-
   border: var(--thick-border);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
@@ -45,6 +44,6 @@ h2 {
 }
 
 .loan-summaries {
-  max-height: 500px;
+  max-height: 45em;
   overflow-y: auto;
 }
