@@ -19,7 +19,8 @@
     <button class="hamburger-menu" (click)="toggleMenu()">☰</button>
 
     <div class="menu-overlay" *ngIf="menuOpen">
-      <a [routerLink]="['/'+PROFILE_PATH]" (click)="toggleMenu()">Mi Perfil</a>
+      <a [routerLink]="['/'+PRESTAMISTA_PROFILE_PATH]" (click)="toggleMenu()">Mi Perfil de Prestamista</a>
+      <a [routerLink]="['/'+PRESTATARIO_PROFILE_PATH]" (click)="toggleMenu()">Mi Perfil de Prestatario</a>
       <!--      Añadir logica para que estos no esten y cuando !authenticated si esten-->
       <a [routerLink]="['/'+SIGN_UP_PATH]" (click)="toggleMenu()">Registrarse (temp)</a>
       <a [routerLink]="['/'+LOGIN_PATH]" (click)="toggleMenu()">Login (temp)</a>
