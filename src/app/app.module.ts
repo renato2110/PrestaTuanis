@@ -10,7 +10,8 @@ import { ModalComponent } from './components/modal/modal.component';
 import { InputComponent } from "./components/input/input.component";
 import { CheckboxComponent } from "./components/checkbox/checkbox.component";
 import { RadioComponent } from "./components/radio/radio.component";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { LoginComponent } from "./screens/login/login.component";
 
 @NgModule({
   declarations: [
@@ -21,12 +22,15 @@ import { FormsModule } from "@angular/forms";
     ModalComponent,
     InputComponent,
     CheckboxComponent,
-    RadioComponent
+    RadioComponent,
+
+    // Screens o pantallas
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
