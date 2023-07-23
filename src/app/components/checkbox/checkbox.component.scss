@@ -37,7 +37,7 @@
       visibility: hidden;
     }
 
-    &.active::after {
+    &:checked::after {
       visibility: visible;
     }
   }
