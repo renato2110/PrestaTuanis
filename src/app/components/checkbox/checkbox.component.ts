@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-checkbox',
@@ -12,5 +12,11 @@ export class CheckboxComponent {
 
   toggleActive() {
     this.active = !this.active;
+  }
+
+  @Output() rightChange = new EventEmitter<boolean>();
+
+  onCheckboxChange(event: Event) {
+    this.rightChange.emit((event.target as HTMLInputElement).checked);
   }
 }
