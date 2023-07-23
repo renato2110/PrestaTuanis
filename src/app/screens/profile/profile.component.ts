@@ -12,6 +12,9 @@ export class ProfileComponent {
   @Input() profileType: 'Prestamista' | 'Prestatario' = 'Prestamista';
 
 
+  showModal: boolean = false;
+
+
   loans = [
     { title: 'Préstamo para Capital de Trabajo', loanAmount: 5000, interestRate: 8.2 },
     { title: 'Préstamo para Expansión de Negocio', loanAmount: 8000, interestRate: 7.5 },
@@ -55,7 +58,10 @@ export class ProfileComponent {
 
 
   onSubmit() {
-    console.log(this.profileForm.value);
+    if (this.profileForm.valid) {
+      console.log(this.profileForm.value);
+      this.showModal = true;
+    }
   }
 
 
