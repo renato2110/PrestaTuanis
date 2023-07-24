@@ -54,8 +54,10 @@ export class CrearPrestamoComponent {
     this.totalAmount = Number(result.amount);
     if (result.months) {
       this.payment =  Math.round(this.totalAmount / result.months);
+      const tax = Number(result.tax)
       const nextMonthDate = this.getNextMonthDate();
-      this.calcGraphData(Number(result.months), nextMonthDate, this.payment, Math.round(result.tax));
+      this.calcProbability(this.totalAmount, Number(result.months), tax);
+      this.calcGraphData(Number(result.months), nextMonthDate, this.payment, tax);
       this.firstMonth = nextMonthDate.toDateString();
       nextMonthDate.setMonth(nextMonthDate.getMonth() + Number(result.months-1));
       this.lastMonth = nextMonthDate.toDateString();
@@ -91,5 +93,16 @@ export class CrearPrestamoComponent {
     };
     this.graphData = newGraphData;
     console.log(this.graphData);
+  }
+
+  calcProbability(amount: number, months: number, tax: number) {
+    let newProbability = 0;
+    // Calcular probabilidad de acuerdo a la cantidad de meses (min:10 y max:30)
+    newProbability += months <= 24 ? 30 : months <= 48 ? 20 : 10;
+    // Calcular probabilidad de acuerdo a la cantidad de interes (min:10 y max:30)
+    newProbability += tax <= 10 ? 10 : tax < 20 ? 20 : 30;
+    // Calcular probabilidad de acuerdo a la cantidad solicitada (min:10 y max:30)
+    newProbability += amount <= 2000 ? 30 : amount <= 5000 ? 20 : 10;
+    this.probability = newProbability;
   }
 }
