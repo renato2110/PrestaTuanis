@@ -13,7 +13,7 @@ export const PRESTATARIO_PROFILE_PATH = 'perfil-prestatario';
 export const SIGN_UP_PATH = 'sign-up';
 export const SELECT_PROFILE_PATH = 'seleccionar-perfil';
 
-export const CREAR_PRESTAMO_PATH = 'crear-prestamos';
+export const CREAR_PRESTAMO_PATH = 'crear-prestamo';
 
 export const PRESTAMISTA = 'Prestamista';
 export const PRESTATARIO = 'Prestatario';

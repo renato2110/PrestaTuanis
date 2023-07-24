@@ -51,14 +51,13 @@
         }
 
         &-graphic {
-            width: 296px;
-            height: 312px;
+            width: 50%;
             margin-top: 70px;
             padding: 16px;
             border: var(--thick-border);
             
             h3 {
-                margin: 0px;
+                margin: 0px 0px 16px;
             }
         }
     }

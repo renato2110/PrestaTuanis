@@ -19,6 +19,7 @@ export class CrearPrestamoComponent {
   payment: number = 0;
   firstMonth: string = '';
   lastMonth: string = '';
+  graphData: Object[] = [];
 
   constructor(private fb: FormBuilder) {
     this.creationForm = this.fb.group({
@@ -51,14 +52,14 @@ export class CrearPrestamoComponent {
 
   calcResults(result: any) {
     this.totalAmount = Math.round(Number(result.amount) + ((result.amount * result.tax) / 100));
-    this.payment =  Math.round(result.months ? this.totalAmount / result.months : 0);
-    const nextMonthDate = this.getNextMonthDate();
-    this.firstMonth = nextMonthDate.toDateString();
-    console.log(nextMonthDate.getMonth(), result.months);
-    console.log(nextMonthDate);
-    nextMonthDate.setMonth(nextMonthDate.getMonth() + Number(result.months-1));
-    console.log(nextMonthDate);
-    this.lastMonth = nextMonthDate.toDateString();
+    if (result.months) {
+      this.payment =  Math.round(this.totalAmount / result.months);
+      const nextMonthDate = this.getNextMonthDate();
+      this.calcGraphData(Number(result.months), nextMonthDate);
+      this.firstMonth = nextMonthDate.toDateString();
+      nextMonthDate.setMonth(nextMonthDate.getMonth() + Number(result.months-1));
+      this.lastMonth = nextMonthDate.toDateString();
+    }
   }
 
   getNextMonthDate() {
@@ -68,5 +69,23 @@ export class CrearPrestamoComponent {
     } else {
         return new Date(now.getFullYear(), now.getMonth() + 1, 1);
     }
+  }
+
+  calcGraphData(months: number, firstMonth: Date) {
+    let newGraphData: Object[] = [];
+    for (let i = 0; i < months; i++) {
+      let month: string | number = i;
+      if (months <= 12) {
+        const newDate = new Date(firstMonth.getTime());
+        newDate.setMonth(newDate.getMonth() + i)
+        month = newDate.toLocaleString('default', {month: 'short'})
+      }
+      newGraphData.push({
+        month,
+        gold: this.payment
+      });
+    };
+    this.graphData = newGraphData;
+    console.log(this.graphData);
   }
 }

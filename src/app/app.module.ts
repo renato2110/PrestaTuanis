@@ -17,6 +17,9 @@ import { ProfileComponent } from "./screens/profile/profile.component";
 import { LoanSummaryComponent } from './components/loan-summary/loan-summary.component';
 import { SeleccionarPerfilComponent } from './screens/seleccionar-perfil/seleccionar-perfil.component';
 import { CrearPrestamoComponent } from './screens/crear-prestamo/crear-prestamo.component';
+import { GraphComponent } from './components/graph/graph.component';
+import { ChartModule } from '@syncfusion/ej2-angular-charts'; 
+import { CategoryService, ColumnSeriesService, LineSeriesService } from '@syncfusion/ej2-angular-charts';
 
 @NgModule({
   declarations: [
@@ -35,14 +38,16 @@ import { CrearPrestamoComponent } from './screens/crear-prestamo/crear-prestamo.
     ProfileComponent,
     LoanSummaryComponent,
     SeleccionarPerfilComponent,
-    CrearPrestamoComponent
+    CrearPrestamoComponent,
+    GraphComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartModule
   ],
-  providers: [],
+  providers: [CategoryService, ColumnSeriesService, LineSeriesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
