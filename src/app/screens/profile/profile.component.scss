@@ -16,6 +16,13 @@
 
 .loans {
   width: auto;
+  border: var(--thick-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 12px 16px;
+  margin-left: 3em;
+  background-color: var(--background);
+  color: var(--primary-text);
 }
 
 .button-group {
@@ -37,6 +44,6 @@ h2 {
 }
 
 .loan-summaries {
-  max-height: 500px;
+  max-height: 45em;
   overflow-y: auto;
 }

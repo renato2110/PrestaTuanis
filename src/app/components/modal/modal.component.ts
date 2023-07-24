@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -10,7 +10,9 @@ export class ModalComponent {
   @Input() title: string = '';
   @Input() content: string = '';
 
+  @Output() onClose = new EventEmitter<void>(); // Add this line
+
   closeModal() {
-    alert('Close');
+    this.onClose.emit(); // Replace your alert with this line
   }
 }

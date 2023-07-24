@@ -1,5 +1,5 @@
-import { Component, forwardRef, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
+import { Component, forwardRef, Input } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
@@ -18,14 +18,23 @@ export class InputComponent implements ControlValueAccessor {
   @Input() placeholder: string = '';
   @Input() type: string = 'text';
   @Input() textArea: boolean = false;
+  @Input() pattern: string = '';
+  @Input() patternExample: string = '';
   value: string = '';
   active: boolean = false;
+
+  formControl: FormControl = new FormControl(''); // Initialize here
 
   private onChange = (value: string) => {};
   private onTouched = () => {};
 
+  ngOnChanges(): void {
+    if (this.pattern) this.formControl.setValidators(Validators.pattern(this.pattern));
+  }
+
   writeValue(value: string): void {
     this.value = value;
+    this.formControl.setValue(value);
   }
 
   registerOnChange(fn: any): void {
@@ -42,7 +51,6 @@ export class InputComponent implements ControlValueAccessor {
     this.onChange(this.value);
     this.onTouched();
   }
-
 
   activate() {
     this.active = true;

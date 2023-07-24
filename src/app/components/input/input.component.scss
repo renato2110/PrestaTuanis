@@ -44,6 +44,18 @@
     }
   }
 
+  &.invalid {
+    input {
+      border-color: var(--error-color);
+    }
+  }
+
+  .error-message {
+    color: var(--error-color);
+    font-size: 14px;
+    margin-top: 5px;
+  }
+
   // & label.active, & input:focus + label {
   //   font-size: 22px; /* Disminuir el tamaño de fuente cuando está enfocado */
   //   color: var(--light-primary);
