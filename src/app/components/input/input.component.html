@@ -1,6 +1,7 @@
-<div class="input-field" [ngClass]="{'active': active}">
+<div class="input-field" [ngClass]="{'active': active, 'invalid': formControl.invalid && formControl.touched}">
   <label>{{label}}</label>
-  <input [type]="type" [value]="value" (input)="updateValue($event)" [placeholder]="placeholder" (focus)="activate()" (blur)="deactivate()">
+  <input [type]="type" [formControl]="formControl" [placeholder]="placeholder" (focus)="activate()" (blur)="deactivate()">
+  <div class="error-message" *ngIf="formControl.invalid && formControl.touched">
+    Formato invalido. Ejemplo de formato válido: {{patternExample}}
+  </div>
 </div>
-
-

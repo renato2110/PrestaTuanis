@@ -41,9 +41,9 @@ export class ProfileComponent {
 
       this.profileForm = this.fb.group({
         name: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
+        email: ['', [Validators.required]],
         phone: ['', Validators.required],
-        id: ['', Validators.required],
+        id: ['', Validators.required,],
         address: ['', Validators.required]
       });
 
@@ -58,8 +58,8 @@ export class ProfileComponent {
 
 
   onSubmit() {
+    console.log(this.profileForm.value, this.profileForm.valid);
     if (this.profileForm.valid) {
-      console.log(this.profileForm.value);
       this.showModal = true;
     }
   }
