@@ -20,7 +20,7 @@ export const PRESTAMISTA = 'Prestamista';
 export const PRESTATARIO = 'Prestatario';
 
 const routes: Routes = [
-  { path: '', redirectTo: LOGIN_PATH, pathMatch: 'full' }, // Redirect to login by default
+  { path: '', redirectTo: LOGIN_PATH, pathMatch: 'full' }, // Default
   { path: LOGIN_PATH, component: LoginComponent },
   { path: SIGN_UP_PATH, component: SignUpComponent },
   { path: PRESTAMISTA_PROFILE_PATH, component: ProfileComponent, data: { profileType: PRESTAMISTA }, canActivate: [AuthGuard] },

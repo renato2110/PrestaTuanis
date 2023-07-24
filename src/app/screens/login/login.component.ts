@@ -15,6 +15,7 @@ export class LoginComponent {
   errorMessage: string = '';
 
   constructor(private fb: FormBuilder, private router: Router, private authService: AuthenticationService) {
+    // Inicializar el formulario de inicio de sesión con Angular FormBuilder
     this.loginForm = this.fb.group({
       email: [''],
       password: [''],
@@ -23,31 +24,33 @@ export class LoginComponent {
   }
 
   ngOnInit() {
+    // Establecer que la página actual es la página de inicio de sesión
     this.authService.setOnLoginPage(true);
   }
 
   async onSubmit() {
     const { email, password } = this.loginForm.value;
 
+    // Obtener el usuario de la base de datos basado en el correo electrónico y contraseña ingresados
     const user = await db.users.get({ email: email, password: password });
 
     if (user) {
+      // El usuario existe, establecerlo como usuario actual en el servicio de autenticación
       this.authService.setCurrentUser(user);
-      // User exists, redirect to profile page
       if (user.isPrestamista) {
-        // Redirect to Prestamista profile page
+        // Redirigir a la página de perfil del Prestamista
         this.router.navigate([`/${PRESTAMISTA_PROFILE_PATH}`]);
       } else if (user.isPrestatario) {
-        // Redirect to Prestatario profile page
+        // Redirigir a la página de perfil del Prestatario
         this.router.navigate([`/${PRESTATARIO_PROFILE_PATH}`]);
       }
     } else {
-      // User doesn't exist, show error message
-      this.errorMessage = 'Credenciales invalidas!';
+      // El usuario no existe, mostrar mensaje de error
+      this.errorMessage = 'Credenciales inválidas!';
     }
   }
 
   forgotPassword() {
-    console.log('Forgot password clicked');
+    console.log('Clic en Olvidó la contraseña');
   }
 }

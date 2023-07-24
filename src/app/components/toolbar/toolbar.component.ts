@@ -14,11 +14,11 @@ import { AuthenticationService } from "../../../service/authentication";
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent {
-  constructor(private _eref: ElementRef, private authService: AuthenticationService) { }
+  constructor(private _eref: ElementRef, protected authService: AuthenticationService) { }
 
-  menuOpen: boolean = false; // Add this line
+  menuOpen: boolean = false;
 
-  toggleMenu() { // And add this method
+  toggleMenu() {
     this.menuOpen = !this.menuOpen;
   }
 
