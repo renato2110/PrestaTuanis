@@ -51,11 +51,11 @@ export class CrearPrestamoComponent {
   }
 
   calcResults(result: any) {
-    this.totalAmount = Math.round(Number(result.amount) + ((result.amount * result.tax) / 100));
+    this.totalAmount = Number(result.amount);
     if (result.months) {
       this.payment =  Math.round(this.totalAmount / result.months);
       const nextMonthDate = this.getNextMonthDate();
-      this.calcGraphData(Number(result.months), nextMonthDate);
+      this.calcGraphData(Number(result.months), nextMonthDate, this.payment, Math.round(result.tax));
       this.firstMonth = nextMonthDate.toDateString();
       nextMonthDate.setMonth(nextMonthDate.getMonth() + Number(result.months-1));
       this.lastMonth = nextMonthDate.toDateString();
@@ -71,8 +71,9 @@ export class CrearPrestamoComponent {
     }
   }
 
-  calcGraphData(months: number, firstMonth: Date) {
+  calcGraphData(months: number, firstMonth: Date, amount: number, tax: number) {
     let newGraphData: Object[] = [];
+    let lastAmount = amount;
     for (let i = 0; i < months; i++) {
       let month: string | number = i;
       if (months <= 12) {
@@ -80,9 +81,12 @@ export class CrearPrestamoComponent {
         newDate.setMonth(newDate.getMonth() + i)
         month = newDate.toLocaleString('default', {month: 'short'})
       }
+      const payment = Math.round((lastAmount * tax) / 100);
+      this.totalAmount += payment;
+      lastAmount += payment;
       newGraphData.push({
         month,
-        gold: this.payment
+        gold: payment
       });
     };
     this.graphData = newGraphData;
