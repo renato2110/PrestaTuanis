@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { AuthenticationService } from "../../../service/authentication";
 
 @Component({
   selector: 'app-sign-up',
@@ -9,7 +10,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class SignUpComponent {
   signUpForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthenticationService) {
     this.signUpForm = this.fb.group({
       name: [''],
       email: [''],
@@ -18,6 +19,10 @@ export class SignUpComponent {
       terms: [false],
       userType: ['Prestatario']
     });
+  }
+
+  ngOnInit() {
+    this.authService.setOnLoginPage(false);
   }
 
   onSubmit() {

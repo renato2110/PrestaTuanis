@@ -5,6 +5,7 @@ import { ProfileComponent } from "./screens/profile/profile.component";
 import { SignUpComponent } from './screens/sign-up/sign-up.component';
 import { SeleccionarPerfilComponent } from './screens/seleccionar-perfil/seleccionar-perfil.component';
 import { CrearPrestamoComponent } from './screens/crear-prestamo/crear-prestamo.component';
+import { AuthGuard } from "../service/auth.guardian";
 
 export const LOGIN_PATH = 'login';
 export const PRESTAMISTA_PROFILE_PATH = 'perfil-prestamista';
@@ -19,12 +20,13 @@ export const PRESTAMISTA = 'Prestamista';
 export const PRESTATARIO = 'Prestatario';
 
 const routes: Routes = [
+  { path: '', redirectTo: LOGIN_PATH, pathMatch: 'full' }, // Redirect to login by default
   { path: LOGIN_PATH, component: LoginComponent },
   { path: SIGN_UP_PATH, component: SignUpComponent },
-  { path: PRESTAMISTA_PROFILE_PATH, component: ProfileComponent, data: { profileType: PRESTAMISTA } },
-  { path: PRESTATARIO_PROFILE_PATH, component: ProfileComponent, data: { profileType: PRESTATARIO } },
-  { path: SELECT_PROFILE_PATH, component: SeleccionarPerfilComponent },
-  { path: CREAR_PRESTAMO_PATH, component: CrearPrestamoComponent }
+  { path: PRESTAMISTA_PROFILE_PATH, component: ProfileComponent, data: { profileType: PRESTAMISTA }, canActivate: [AuthGuard] },
+  { path: PRESTATARIO_PROFILE_PATH, component: ProfileComponent, data: { profileType: PRESTATARIO }, canActivate: [AuthGuard] },
+  { path: SELECT_PROFILE_PATH, component: SeleccionarPerfilComponent, canActivate: [AuthGuard] },
+  { path: CREAR_PRESTAMO_PATH, component: CrearPrestamoComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

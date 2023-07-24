@@ -10,7 +10,10 @@
   </span>
 
   <ng-container *ngIf="!authenticated; else authenticatedMenu">
-    <a class="toolbar-link" [routerLink]="['/registration']">
+    <a *ngIf="!authService.getOnLoginPage()" class="toolbar-link" [routerLink]="['/'+LOGIN_PATH]">
+      Iniciar Sesión
+    </a>
+    <a *ngIf="authService.getOnLoginPage()" class="toolbar-link" [routerLink]="['/'+SIGN_UP_PATH]">
       Registrarse
     </a>
   </ng-container>
