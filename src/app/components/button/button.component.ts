@@ -10,4 +10,5 @@ export class ButtonComponent {
   @Input() primary: boolean = false;
   @Input() underline: boolean = false;
   @Input() large: boolean = false;
+  @Input() disabled: boolean = false;
 }
