@@ -6,6 +6,7 @@ import {
   SELECT_PROFILE_PATH,
   SIGN_UP_PATH
 } from "../../app-routing.module";
+import { AuthenticationService } from "../../../service/authentication";
 
 @Component({
   selector: 'app-toolbar',
@@ -13,20 +14,21 @@ import {
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent {
-  constructor(private _eref: ElementRef) { }
+  constructor(private _eref: ElementRef, protected authService: AuthenticationService) { }
 
-  @Input() authenticated: boolean = false;
+  menuOpen: boolean = false;
 
-  menuOpen: boolean = false; // Add this line
-
-  toggleMenu() { // And add this method
+  toggleMenu() {
     this.menuOpen = !this.menuOpen;
   }
 
+  get authenticated() {
+    return this.authService.isAuthenticated();
+  }
+
   logout() {
-    // Add your logout logic here
     console.log('Logout clicked');
-    this.authenticated = false; // if you want to simulate a logout
+    this.authService.logout();
   }
 
   @HostListener('document:click', ['$event'])

@@ -6,6 +6,9 @@
   <app-checkbox formControlName="rememberMe" [label]="'Recordar mi correo'"></app-checkbox>
 
   <app-button (click)="onSubmit()" [text]="'Iniciar sesión'" [primary]="true" [large]="true"></app-button>
-  
+
+  <div class="error-message" *ngIf="errorMessage">{{errorMessage}}</div>
+
+
   <a (click)="forgotPassword()">Olvidé mi contraseña</a>
 </div>
