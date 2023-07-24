@@ -22,4 +22,9 @@ button {
     &.large-button {
         width: 100%;
     }
+
+  &.disabled {
+    cursor: not-allowed;
+    filter: brightness(50%);
+  }
 }

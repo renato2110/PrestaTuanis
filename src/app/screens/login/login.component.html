@@ -1,14 +1,17 @@
 <div class="container" [formGroup]="loginForm">
   <h1>Iniciar Sesión</h1>
+
   <app-input formControlName="email" [label]="'Correo'" [placeholder]="'Introduzca su correo'"></app-input>
+  <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">Correo invalido</div>
+
   <app-input formControlName="password" [label]="'Contraseña'" [placeholder]="'Introduzca su contraseña'" [type]="'password'"></app-input>
+  <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">Digite una contraseña</div>
 
   <app-checkbox formControlName="rememberMe" [label]="'Recordar mi correo'"></app-checkbox>
 
-  <app-button (click)="onSubmit()" [text]="'Iniciar sesión'" [primary]="true" [large]="true"></app-button>
+  <app-button [disabled]="!loginForm.valid" (click)="onSubmit()" [text]="'Iniciar sesión'" [primary]="true" [large]="true"></app-button>
 
   <div class="error-message" *ngIf="errorMessage">{{errorMessage}}</div>
-
 
   <a (click)="forgotPassword()">Olvidé mi contraseña</a>
 </div>
