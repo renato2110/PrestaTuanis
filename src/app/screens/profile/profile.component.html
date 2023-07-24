@@ -4,18 +4,12 @@
       <h1>Perfil de {{ profileType.toLowerCase() }}</h1>
       <div class="input-container">
         <app-input formControlName="name" [label]="'Nombre'" [placeholder]="'Introduzca su nombre'"></app-input>
-        <app-input formControlName="email" [label]="'Correo Electronico'"
-                   [placeholder]="'Introduzca su correo'"></app-input>
-        <app-input formControlName="phone" [label]="'Numero de Telefono'"
-                   [placeholder]="'Introduzca su telefono'"></app-input>
-        <app-input formControlName="id" [label]="'Identificación'"
-                   [placeholder]="'Introduzca su identificación'"></app-input>
-        <app-input formControlName="address" [label]="'Dirección'"
-                   [placeholder]="'Introduzca su dirección'"></app-input>
-        <app-input *ngIf="profileType === 'Prestatario'" formControlName="companyName" [label]="'Nombre de la empresa'"
-                   [placeholder]="'Introduzca el nombre de la empresa'"></app-input>
-        <app-input *ngIf="profileType === 'Prestatario'" formControlName="companyId" [label]="'Cédula Jurídica'"
-                   [placeholder]="'Introduzca la cédula jurídica de su empresa'"></app-input>
+        <app-input formControlName="email" [label]="'Correo Electronico'" [placeholder]="'Introduzca su correo'" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [patternExample]="'ejemplo@dominio.com'"></app-input>
+        <app-input formControlName="phone" [label]="'Numero de Telefono'" [placeholder]="'Introduzca su telefono'" pattern="^[0-9]{4}-[0-9]{4}$" [patternExample]="'1234-5678'"></app-input>
+        <app-input formControlName="id" [label]="'Identificación'" [placeholder]="'Introduzca su identificación'" pattern="^[0-9]{9}$" [patternExample]="'123456789'"></app-input>
+        <app-input formControlName="address" [label]="'Dirección'" [placeholder]="'Introduzca su dirección'"></app-input>
+        <app-input *ngIf="profileType === 'Prestatario'" formControlName="companyName" [label]="'Nombre de la empresa'" [placeholder]="'Introduzca el nombre de la empresa'"></app-input>
+        <app-input *ngIf="profileType === 'Prestatario'" formControlName="companyId" [label]="'Cédula Jurídica'" [placeholder]="'Introduzca la cédula jurídica de su empresa'" pattern="^[0-9]{9}$" [patternExample]="'123456789'"></app-input>
         <div class="button-group">
           <app-button [text]="'Guardar cambios'" [primary]="true" (click)="onSubmit()"></app-button>
           <p>Todos los campos son requeridos para aplicar a préstamos.</p>
