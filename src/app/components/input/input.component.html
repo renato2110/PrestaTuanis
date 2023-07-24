@@ -1,6 +1,8 @@
 <div class="input-field" [ngClass]="{'active': active}">
   <label>{{label}}</label>
-  <input [type]="type" [value]="value" (input)="updateValue($event)" [placeholder]="placeholder" (focus)="activate()" (blur)="deactivate()">
+  <input *ngIf="!textArea" [type]="type" [value]="value" (input)="updateValue($event)" [placeholder]="placeholder" (focus)="activate()" (blur)="deactivate()">
+  <textarea *ngIf="textArea" [value]="value" (input)="updateValue($event)" [placeholder]="placeholder" (focus)="activate()" (blur)="deactivate()">
+  </textarea>
 </div>
 
 

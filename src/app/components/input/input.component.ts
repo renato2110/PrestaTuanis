@@ -17,6 +17,7 @@ export class InputComponent implements ControlValueAccessor {
   @Input() label: string = '';
   @Input() placeholder: string = '';
   @Input() type: string = 'text';
+  @Input() textArea: boolean = false;
   value: string = '';
   active: boolean = false;
 

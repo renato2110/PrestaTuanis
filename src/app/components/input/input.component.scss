@@ -1,7 +1,7 @@
 .input-field {
   display: grid;
 
-  & label, & input {
+  & label, & input, & textArea {
     transition: all 0.3s;
     outline: none;
   }
@@ -15,7 +15,7 @@
     color: var(--primary-text);
   }
 
-  & input {
+  & input, textArea {
     border: var(--thick-border);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
@@ -29,13 +29,17 @@
     }
   }
 
+  & textArea {
+    height: 86px;
+  }
+
   &.active {
-    input, label {
+    input, label, textArea {
       font-size: 18px; /* Disminuir el tamaño de fuente cuando está enfocado */
       color: var(--light-primary);
     }
 
-    input {
+    input, textArea {
       border-color: var(--light-primary);
     }
   }
