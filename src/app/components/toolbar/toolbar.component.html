@@ -5,10 +5,6 @@
     alt="PrestaTuanis Logo"
     src="../../../favicon.ico"
   />
-  <span class="toolbar-title">
-    PrestaTuanis
-  </span>
-
   <ng-container *ngIf="!authenticated; else authenticatedMenu">
     <a *ngIf="!authService.getOnLoginPage()" class="toolbar-link" [routerLink]="['/'+LOGIN_PATH]">
       Iniciar Sesión
@@ -17,6 +13,8 @@
       Registrarse
     </a>
   </ng-container>
+
+  <span class="toolbar-title">PrestaTuanis</span>
 
   <ng-template #authenticatedMenu>
     <button class="hamburger-menu" (click)="toggleMenu()">☰</button>

@@ -1,0 +1,19 @@
+.container {
+    padding: 32px;
+
+    h1 {
+        margin-top: 0;
+    }
+
+    &-search {
+        app-input {
+            width: 70%;
+        }
+        app-button  {
+            margin-left: 20px;
+        }
+        display: flex;
+        max-width: 60%;
+        align-items: end;
+    }
+}

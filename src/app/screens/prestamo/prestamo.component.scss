@@ -4,6 +4,11 @@
     max-width: 936px;
     gap: 48px;
 
+    h1 {
+        margin: 0px;
+        text-align: center;
+    }
+
     &-header {
         display: flex;
         justify-content: space-between;

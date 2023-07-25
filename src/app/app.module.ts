@@ -21,6 +21,8 @@ import { GraphComponent } from './components/graph/graph.component';
 import { ChartModule } from '@syncfusion/ej2-angular-charts'; 
 import { CategoryService, ColumnSeriesService, LineSeriesService } from '@syncfusion/ej2-angular-charts';
 import { PrestamoComponent } from './screens/prestamo/prestamo.component';
+import { BuscarPrestamoComponent } from './screens/buscar-prestamo/buscar-prestamo.component';
+import { CardGroupComponent } from './components/card-group/card-group.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { PrestamoComponent } from './screens/prestamo/prestamo.component';
     SeleccionarPerfilComponent,
     CrearPrestamoComponent,
     GraphComponent,
-    PrestamoComponent
+    PrestamoComponent,
+    BuscarPrestamoComponent,
+    CardGroupComponent
   ],
   imports: [
     BrowserModule,

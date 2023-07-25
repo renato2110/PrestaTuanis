@@ -12,6 +12,7 @@
     font-weight: 400;
     font-size: 20px; /* Aumentar el tamaño de fuente */
     line-height: 24px; /* Ajustar este valor según sea necesario */
+    margin-bottom: 12px;
     color: var(--primary-text);
   }
 
@@ -20,7 +21,6 @@
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
     padding: 12px 16px;
-    margin-top: 12px;
     background-color: var(--background); /* Establecer el color de fondo del campo de entrada */
     color: var(--primary-text); /* Establecer el color del texto de entrada */
 
