@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PRESTAMISTA_PROFILE_PATH, PRESTATARIO_PROFILE_PATH } from '../../app-routing.module';
 import { db } from "../../database/db";
@@ -17,8 +17,8 @@ export class LoginComponent {
   constructor(private fb: FormBuilder, private router: Router, private authService: AuthenticationService) {
     // Inicializar el formulario de inicio de sesión con Angular FormBuilder
     this.loginForm = this.fb.group({
-      email: [''],
-      password: [''],
+      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
+      password: ['', Validators.required],
       rememberMe: [false]
     });
   }
@@ -46,11 +46,11 @@ export class LoginComponent {
       }
     } else {
       // El usuario no existe, mostrar mensaje de error
-      this.errorMessage = 'Credenciales inválidas!';
+      this.errorMessage = 'Credenciales inválidas. Por favor intente de nuevo o regístrese si no tiene una cuenta.';
     }
   }
 
   forgotPassword() {
-    console.log('Clic en Olvidó la contraseña');
+    console.log('Click en Olvidó la contraseña');
   }
 }
