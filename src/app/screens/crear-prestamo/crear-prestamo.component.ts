@@ -20,6 +20,7 @@ export class CrearPrestamoComponent {
   firstMonth: string = '';
   lastMonth: string = '';
   graphData: Object[] = [];
+  showModal: boolean = false;
 
   constructor(private fb: FormBuilder) {
     this.creationForm = this.fb.group({
@@ -42,6 +43,9 @@ export class CrearPrestamoComponent {
 
   onSubmit() {
     console.log(this.creationForm.value);
+    if (this.creationForm.valid) {
+      this.showModal = true;
+    }
   }
 
   handleFileChanged() {

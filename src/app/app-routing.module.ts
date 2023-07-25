@@ -6,6 +6,7 @@ import { SignUpComponent } from './screens/sign-up/sign-up.component';
 import { SeleccionarPerfilComponent } from './screens/seleccionar-perfil/seleccionar-perfil.component';
 import { CrearPrestamoComponent } from './screens/crear-prestamo/crear-prestamo.component';
 import { AuthGuard } from "../service/auth.guardian";
+import { PrestamoComponent } from './screens/prestamo/prestamo.component';
 
 export const LOGIN_PATH = 'login';
 export const PRESTAMISTA_PROFILE_PATH = 'perfil-prestamista';
@@ -14,6 +15,7 @@ export const PRESTATARIO_PROFILE_PATH = 'perfil-prestatario';
 export const SIGN_UP_PATH = 'sign-up';
 export const SELECT_PROFILE_PATH = 'seleccionar-perfil';
 
+export const PRESTAMO_PATH = 'prestamo';
 export const CREAR_PRESTAMO_PATH = 'crear-prestamo';
 
 export const PRESTAMISTA = 'Prestamista';
@@ -26,6 +28,7 @@ const routes: Routes = [
   { path: PRESTAMISTA_PROFILE_PATH, component: ProfileComponent, data: { profileType: PRESTAMISTA }, canActivate: [AuthGuard] },
   { path: PRESTATARIO_PROFILE_PATH, component: ProfileComponent, data: { profileType: PRESTATARIO }, canActivate: [AuthGuard] },
   { path: SELECT_PROFILE_PATH, component: SeleccionarPerfilComponent, canActivate: [AuthGuard] },
+  { path: PRESTAMO_PATH, component: PrestamoComponent},
   { path: CREAR_PRESTAMO_PATH, component: CrearPrestamoComponent, canActivate: [AuthGuard] }
 ];
 

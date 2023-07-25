@@ -20,6 +20,7 @@ import { CrearPrestamoComponent } from './screens/crear-prestamo/crear-prestamo.
 import { GraphComponent } from './components/graph/graph.component';
 import { ChartModule } from '@syncfusion/ej2-angular-charts'; 
 import { CategoryService, ColumnSeriesService, LineSeriesService } from '@syncfusion/ej2-angular-charts';
+import { PrestamoComponent } from './screens/prestamo/prestamo.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CategoryService, ColumnSeriesService, LineSeriesService } from '@syncfu
     LoanSummaryComponent,
     SeleccionarPerfilComponent,
     CrearPrestamoComponent,
-    GraphComponent
+    GraphComponent,
+    PrestamoComponent
   ],
   imports: [
     BrowserModule,

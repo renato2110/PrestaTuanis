@@ -35,5 +35,13 @@
             <app-graph [data]="graphData"></app-graph>
         </div>
     </div>
+
+    <app-modal
+        *ngIf="showModal"
+        (onClose)="showModal = false"
+        [header]="'Éxito!'"
+        [title]="'Su solicitud de préstamo ha sido creada y se le informará cuando un prestamista esté interesado!'"
+    >
+    </app-modal>
   </div>
   

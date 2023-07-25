@@ -1,0 +1,67 @@
+.container {
+    display: grid;
+    margin: 80px auto;
+    max-width: 936px;
+    gap: 48px;
+
+    &-header {
+        display: flex;
+        justify-content: space-between;
+
+        .card {
+            width: 45%;
+        }
+    }
+
+    &-button {
+        width: 240px;
+        margin: 0px auto 32px;
+    }
+
+    .card {
+        background-color: var(--background);
+        border: var(--thick-border);
+        box-shadow: var(--shadow);
+        display: grid;
+        padding: 16px 12px 24px;
+        gap: 20px;
+
+        h2, h3 {
+            margin: 0px;
+        }
+
+        p {
+            margin: 0;
+            span {
+                font-weight: 700;
+                margin-right: 4px;
+            }
+        }
+         
+        &-name {
+            display: flex;
+
+            img {
+                height: 50px;
+                width: 50px;
+                margin-right: 12px;
+            }
+        }
+
+        &-container {
+            background: var(--secondary-text);
+            border: var(--thick-border);
+            display: grid;
+            gap: 20px;
+            padding: 12px 16px;
+        }
+
+        table {
+            td, th {
+                border-bottom: 1px solid var(--dark-secondary);
+                text-align: left;
+                padding: 12px;
+            }
+        }
+    }
+}
