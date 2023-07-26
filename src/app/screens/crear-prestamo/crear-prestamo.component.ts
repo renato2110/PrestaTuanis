@@ -45,7 +45,7 @@ export class CrearPrestamoComponent {
   }
 
   async redirectToPrestamo() {
-    const { amount, tax, months } = this.creationForm.value;
+    const { amount, tax, months, image } = this.creationForm.value;
     const currentUser = this.authService.getCurrentUser();
     if (currentUser) {
       const prestatario = await db.users.get({ email: currentUser.email, password: currentUser.password });
@@ -57,6 +57,7 @@ export class CrearPrestamoComponent {
           solicitedDate: new Date(),
           monthlyPayment: this.payment,
           risk: this.probability,
+          img: image,
           prestatario
         });
         this.router.navigateByUrl(`prestamo?id=${newLoan}`);
@@ -65,7 +66,6 @@ export class CrearPrestamoComponent {
   }
 
   onSubmit() {
-    console.log(this.creationForm.value);
     if (this.creationForm.valid) {
       this.showModal = true;
     }

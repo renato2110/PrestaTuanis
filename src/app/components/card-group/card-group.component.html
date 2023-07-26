@@ -8,7 +8,7 @@
             <h3>${{element.amount}}</h3>
             <span>Tasa de interés {{element.tax}}%</span>
             <span>{{element.months}} meses</span>
-            <app-button [text]="'Ver Detalles'" [primary]="true" [underline]="true" [routerLink]="['/prestamo']"></app-button>
+            <app-button [text]="'Ver Detalles'" [primary]="true" [underline]="true" (click)="viewDetails(element.id)"></app-button>
         </div>
     </div>
 </div>

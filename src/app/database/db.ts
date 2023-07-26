@@ -10,6 +10,7 @@ export interface Loan {
   solicitedDate: Date;
   monthlyPayment: number;
   risk: number;
+  img?: string;
   prestamista?: User;
   prestatario: User;
 }
@@ -78,6 +79,7 @@ export class AppDB extends Dexie {
       solicitedDate: new Date(),
       monthlyPayment: 500,
       risk: 25,
+      img: '',
       prestatario: prestatario
     });
   }

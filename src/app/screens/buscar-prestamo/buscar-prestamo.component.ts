@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Prestamo } from 'src/app/components/card-group/card-group.component';
+import { db } from 'src/app/database/db';
 
 @Component({
   selector: 'app-buscar-prestamo',
@@ -7,35 +9,14 @@ import { Component } from '@angular/core';
 })
 export class BuscarPrestamoComponent {
 
-  data = [{
-    amount: 3000,
-    tax: 13,
-    months: 24,
-    img: "../../../assets/avatar.png"
-  },{
-    amount: 4000,
-    tax: 12,
-    months: 20,
-    img: "../../../assets/avatar.png"
-  },{
-    amount: 1000,
-    tax: 6,
-    months: 36,
-    img: "../../../assets/avatar.png"
-  },{
-    amount: 3000,
-    tax: 13,
-    months: 24,
-    img: "../../../assets/avatar.png"
-  },{
-    amount: 4000,
-    tax: 12,
-    months: 20,
-    img: "../../../assets/avatar.png"
-  },{
-    amount: 1000,
-    tax: 6,
-    months: 36,
-    img: "../../../assets/avatar.png"
-  }];
+  data: Prestamo[] = [];
+
+
+  async ngOnInit() {
+    const loans = await db.loans.toArray();
+    if (loans) {
+      this.data = loans;
+    }
+    
+  }
 }

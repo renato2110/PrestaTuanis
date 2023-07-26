@@ -1,10 +1,12 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
-interface Prestamo {
+export interface Prestamo {
+  id?: number;
   amount: number;
   tax: number;
   months: number;
-  img: string;
+  img?: string;
 }
 
 @Component({
@@ -15,4 +17,12 @@ interface Prestamo {
 
 export class CardGroupComponent {
   @Input() data: Prestamo[] = [];
+
+  constructor(private router: Router) {}
+
+  viewDetails(id: number | undefined) {
+    if (id !== undefined) {
+      this.router.navigateByUrl(`prestamo?id=${id}`);
+    }
+  }
 }

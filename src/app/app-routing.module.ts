@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: PRESTAMISTA_PROFILE_PATH, component: ProfileComponent, data: { profileType: PRESTAMISTA }, canActivate: [AuthGuard] },
   { path: PRESTATARIO_PROFILE_PATH, component: ProfileComponent, data: { profileType: PRESTATARIO }, canActivate: [AuthGuard] },
   { path: SELECT_PROFILE_PATH, component: SeleccionarPerfilComponent, canActivate: [AuthGuard] },
-  { path: PRESTAMO_PATH, component: PrestamoComponent },
+  { path: PRESTAMO_PATH, component: PrestamoComponent, canActivate: [AuthGuard]  },
   { path: BUSCAR_PRESTAMO_PATH, component: BuscarPrestamoComponent, canActivate: [AuthGuard] },
   { path: CREAR_PRESTAMO_PATH, component: CrearPrestamoComponent, canActivate: [AuthGuard] }
 ];
