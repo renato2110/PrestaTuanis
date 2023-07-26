@@ -1,5 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { db } from 'src/app/database/db';
+import { AuthenticationService } from 'src/service/authentication';
 
 
 @Component({
@@ -22,14 +25,14 @@ export class CrearPrestamoComponent {
   graphData: Object[] = [];
   showModal: boolean = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthenticationService, private router: Router) {
     this.creationForm = this.fb.group({
-      amount: [],
-      description: [''],
+      amount: [, Validators.required],
+      description: ['', Validators.required],
       image: [],
-      months: [],
-      purpose: [],
-      tax: []
+      months: [, Validators.required],
+      purpose: [, Validators.required],
+      tax: [, Validators.required]
     });
 
     this.creationForm.valueChanges.subscribe(result => {
@@ -39,6 +42,26 @@ export class CrearPrestamoComponent {
 
   handleUploadLinkClick() {
     this.inputFileUploaded?.nativeElement.click();
+  }
+
+  async redirectToPrestamo() {
+    const { amount, tax, months } = this.creationForm.value;
+    const currentUser = this.authService.getCurrentUser();
+    if (currentUser) {
+      const prestatario = await db.users.get({ email: currentUser.email, password: currentUser.password });
+      if (prestatario) {
+        const newLoan = await db.loans.add({
+          amount: Number(amount),
+          tax: Number(tax),
+          months: Number(months),
+          solicitedDate: new Date(),
+          monthlyPayment: this.payment,
+          risk: this.probability,
+          prestatario
+        });
+        this.router.navigateByUrl(`prestamo?id=${newLoan}`);
+      }
+    }
   }
 
   onSubmit() {
@@ -96,7 +119,6 @@ export class CrearPrestamoComponent {
       });
     };
     this.graphData = newGraphData;
-    console.log(this.graphData);
   }
 
   calcProbability(amount: number, months: number, tax: number) {

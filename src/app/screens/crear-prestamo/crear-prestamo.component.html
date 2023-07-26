@@ -2,14 +2,14 @@
 <h1>Creación de Solicitud de Préstamos</h1>
 
 <div class="container" [formGroup]="creationForm">
-    <app-input formControlName="amount" [label]="'Cantidad en dólares'" [placeholder]="'Ingrese el monto a solicitar en dólares'"></app-input>
-    <app-input formControlName="tax" [label]="'Tasa de interés solicitada'" [placeholder]="'Ingrese el número correspondiente a la tasa de interés a solicitar'"></app-input>
-    <app-input formControlName="months" [label]="'Periodo de pago'" [placeholder]="'Ingrese el periodo de pago (hasta 60 meses)'"></app-input>
+    <app-input formControlName="amount" [label]="'Cantidad en dólares'" [placeholder]="'Ingrese el monto a solicitar en dólares'" [type]="'number'"></app-input>
+    <app-input formControlName="tax" [label]="'Tasa de interés solicitada'" [placeholder]="'Ingrese el número correspondiente a la tasa de interés a solicitar'" [type]="'number'"></app-input>
+    <app-input formControlName="months" [label]="'Periodo de pago'" [placeholder]="'Ingrese el periodo de pago (hasta 60 meses)'" [type]="'number'"></app-input>
     <app-input formControlName="purpose" [label]="'Propósito del préstamo'" [placeholder]="'Ingrese el propósito del préstamo'"></app-input>
     <div class="container-description">
         <div class="description">
             <app-input formControlName="description" [label]="'Descripción'" [placeholder]="'Ingrese alguna descripción'" [textArea]="true"></app-input>
-            <app-button (click)="onSubmit()" [text]="'Publicar'" [primary]="true"></app-button>
+            <app-button (click)="onSubmit()" [disabled]="!creationForm.valid" [text]="'Publicar'" [primary]="true"></app-button>
         </div>
         <div class="upload-img">
             <div class="upload-img-preview">
@@ -38,7 +38,7 @@
 
     <app-modal
         *ngIf="showModal"
-        (onClose)="showModal = false"
+        (onClose)="redirectToPrestamo()"
         [header]="'Éxito!'"
         [title]="'Su solicitud de préstamo ha sido creada y se le informará cuando un prestamista esté interesado!'"
     >

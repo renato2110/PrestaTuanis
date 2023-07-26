@@ -3,21 +3,21 @@
     <div class="container-header">
         <div class="card">
             <h2>Información de préstamo</h2>
-            <p><span>Solicitado:</span>$4000</p>
-            <p><span>Tasa de Interés:</span>5%</p>
-            <p><span>Periodo:</span>60 meses</p>
-            <p><span>Fecha de solicitud:</span>01/01/2026</p>
-            <p><span>Riesgo calculado por PrestaTuanis:</span>70%</p>
+            <p><span>Solicitado:</span>${{amount}}</p>
+            <p><span>Tasa de Interés:</span>{{tax}}%</p>
+            <p><span>Periodo:</span>{{months}} meses</p>
+            <p><span>Fecha de solicitud:</span>{{solicitedDate}}</p>
+            <p><span>Riesgo calculado por PrestaTuanis:</span>{{risk}}%</p>
         </div>
         <div class="card">
             <h2>Información prestatario</h2>
             <div class="card-name">
                 <img src="../../../assets/avatar.png">
-                <h3>Reparación Juan Gomez</h3>
+                <h3>{{userName}}</h3>
             </div>
-            <span>Montes de Oca, San José, Costa Rica</span>
+            <span>{{userAddress}}</span>
             <span>Detalles de contacto</span>
-            <span>juan.gomez@ejemplo.com</span>
+            <span>{{userEmail}}</span>
         </div>
     </div>
     <div class="container-button">
