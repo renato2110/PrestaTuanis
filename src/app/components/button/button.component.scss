@@ -29,6 +29,26 @@ button {
   }
 }
 
+.dropdown-button {
+    span {
+        display: flex;
+        display: inline-block;
+        width: 0;
+        height: 0;
+        margin-left: 4px;
+        vertical-align: middle;
+        border-top: 5px dashed;
+        border-right: 5px solid transparent;
+        border-left: 5px solid transparent;
+    }
+
+    &.show-dropdown {
+        span {
+            transform: rotate(180deg);
+        }
+    }
+}
+
 .dropdown-content {
     border-radius: var(--border-radius);
     position: absolute;

@@ -23,7 +23,7 @@ export class ButtonComponent {
   showDropdown: boolean = false;
 
   openDropdown() {
-    this.showDropdown = true;
+    this.showDropdown = !this.showDropdown;
   }
 
   selectDropdownOption(event: DropdownValue) {
