@@ -15,7 +15,7 @@ export class CrearPrestamoComponent {
   creationForm: FormGroup;
   fileSelected: File = new File([], 'image', undefined);
   @ViewChild('imagePreview') imagePreview: ElementRef | undefined;
-  @ViewChild('inputFileUploaded', {static: false}) inputFileUploaded: ElementRef | undefined; 
+  @ViewChild('inputFileUploaded', {static: false}) inputFileUploaded: ElementRef | undefined;
 
   probability: number = 0;
   totalAmount: number = 0;
@@ -51,6 +51,7 @@ export class CrearPrestamoComponent {
       const prestatario = await db.users.get({ email: currentUser.email, password: currentUser.password });
       if (prestatario) {
         const newLoan = await db.loans.add({
+          title: "Nuevo prestamo de " + prestatario.name,
           amount: Number(amount),
           tax: Number(tax),
           months: Number(months),

@@ -7,6 +7,7 @@ import {
   SIGN_UP_PATH
 } from "../../app-routing.module";
 import { AuthenticationService } from "../../../service/authentication";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-toolbar',
@@ -14,7 +15,7 @@ import { AuthenticationService } from "../../../service/authentication";
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent {
-  constructor(private _eref: ElementRef, protected authService: AuthenticationService) { }
+  constructor(private _eref: ElementRef, protected authService: AuthenticationService, private router: Router) { }
 
   menuOpen: boolean = false;
 
@@ -29,6 +30,7 @@ export class ToolbarComponent {
   logout() {
     console.log('Logout clicked');
     this.authService.logout();
+    this.router.navigate([`/${LOGIN_PATH}`]);
   }
 
   @HostListener('document:click', ['$event'])

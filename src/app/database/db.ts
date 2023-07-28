@@ -4,6 +4,7 @@ import { Dexie, Table } from "dexie";
 
 export interface Loan {
   id?: number;
+  title: string;
   amount: number;
   tax: number;
   months: number;
@@ -35,11 +36,35 @@ const prestatario = {
   phone: '5678-1234',
   personalId: '987654321',
   address: '456 Street, City, Province',
-  password: 'password2', // Add this line
+  password: 'password2',
   companyName: 'Acme Corp.',
   companyId: '987654321',
   isPrestamista: false,
   isPrestatario: true
+};
+
+const prestatarioWhoIsAlsoPrestamista = {
+  name: 'Don Juan',
+  email: 'donjuan@gmail.com',
+  phone: '5678-1234',
+  personalId: '987654321',
+  address: '456 Street, City, Province',
+  password: 'password3',
+  companyName: 'Acme Corp.',
+  companyId: '987654321',
+  isPrestamista: true,
+  isPrestatario: true
+};
+
+const prestamista = {
+  name: 'Fernando Mainieri',
+  email: 'fernandomainieri@gmail.com',
+  phone: '1234-5678',
+  personalId: '123456789',
+  address: '123 Street, City, Province',
+  password: 'password1',
+  isPrestamista: true,
+  isPrestatario: false
 };
 
 export class AppDB extends Dexie {
@@ -50,29 +75,26 @@ export class AppDB extends Dexie {
     super('ngdexieliveQuery');
     this.version(3).stores({
       users: '++id, email',
-      loans: '++id, id',
+      loans: '++id, id, prestatario.id, prestamista.id',
     });
     this.on('populate', () => this.populate());
   }
 
   async populate() {
     // Populate users
-    const prestamistaId = await db.users.add({
-      name: 'Fernando Mainieri',
-      email: 'fernandomainieri@gmail.com',
-      phone: '1234-5678',
-      personalId: '123456789',
-      address: '123 Street, City, Province',
-      password: 'password1', // Add this line
-      isPrestamista: true,
-      isPrestatario: false
-    });
+    const prestamistaId = await db.users.add(prestamista);
 
     const prestatarioId = await db.users.add(prestatario);
+
+    const prestatarioWhoIsAlsoPrestamistaId = await db.users.add(prestatarioWhoIsAlsoPrestamista);
+
+    console.log('prestamistaId: ', prestatarioWhoIsAlsoPrestamistaId);
+
 
     // Populate loans
     const loanId = await db.loans.add({
       id: 1,
+      title: 'Préstamo de prueba 1',
       amount: 5000,
       tax: 5,
       months: 12,
@@ -80,7 +102,37 @@ export class AppDB extends Dexie {
       monthlyPayment: 500,
       risk: 25,
       img: '',
-      prestatario: prestatario
+      prestatario: prestatario,
+    });
+
+    // Populate loans
+    const loanId2 = await db.loans.add({
+      id: 2,
+      title: 'Préstamo de prueba 2',
+      amount: 5000,
+      tax: 5,
+      months: 12,
+      solicitedDate: new Date(),
+      monthlyPayment: 500,
+      risk: 25,
+      img: '',
+      prestatario: prestatario,
+      prestamista: prestamista
+    });
+
+    // Populate loans
+    const loanId3 = await db.loans.add({
+      id: 3,
+      title: 'Préstamo de prueba 3',
+      amount: 5000,
+      tax: 5,
+      months: 12,
+      solicitedDate: new Date(),
+      monthlyPayment: 500,
+      risk: 25,
+      img: '',
+      prestatario: prestatario,
+      prestamista: prestatarioWhoIsAlsoPrestamista
     });
   }
 }
