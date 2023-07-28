@@ -28,3 +28,24 @@ button {
     filter: brightness(50%);
   }
 }
+
+.dropdown-content {
+    border-radius: var(--border-radius);
+    position: absolute;
+    background-color: var(--background);
+    min-width: 160px;
+    overflow: auto;
+    z-index: 1;
+    box-shadow: var(--shadow);
+    display: grid;
+
+    span {
+        padding: 12px 16px;
+        display: block;
+
+        &:hover {
+            background-color: var(--dark-background);
+            cursor: pointer;
+        }
+    }
+}

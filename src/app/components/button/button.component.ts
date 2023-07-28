@@ -1,4 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
+
+export interface DropdownValue {
+  id: string;
+  text: string;
+}
 
 @Component({
   selector: 'app-button',
@@ -11,4 +16,24 @@ export class ButtonComponent {
   @Input() underline: boolean = false;
   @Input() large: boolean = false;
   @Input() disabled: boolean = false;
+
+  @Input() dropdown: boolean = false;
+  @Input() dropdownValues: DropdownValue[] = [];
+  @Output() onSelectDropdownOption = new EventEmitter<DropdownValue>();
+  showDropdown: boolean = false;
+
+  openDropdown() {
+    this.showDropdown = true;
+  }
+
+  selectDropdownOption(event: DropdownValue) {
+    this.onSelectDropdownOption.emit(event);
+  }
+  
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    if (!(event.target as Element).className.includes('dropdown-button')) {
+      this.showDropdown = false;
+    }
+  }
 }

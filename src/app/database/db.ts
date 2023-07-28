@@ -48,7 +48,7 @@ export class AppDB extends Dexie {
 
   constructor() {
     super('ngdexieliveQuery');
-    this.version(2).stores({
+    this.version(3).stores({
       users: '++id, email',
       loans: '++id, id',
     });

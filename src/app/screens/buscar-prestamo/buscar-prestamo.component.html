@@ -1,9 +1,11 @@
 <div class="container">
     <h1>Buscar Préstamo</h1>
-    <div class="container-search">
-        <app-input [placeholder]="'Buscar préstamos para financiar'"></app-input>
-        <app-button [text]="'Buscar'" [primary]="true"></app-button>
-        <app-button [text]="'Filtrar'" [primary]="false"></app-button>
+    <div class="container-search" [formGroup]="searchForm">
+        <app-input formControlName="searchValue" [placeholder]="'Buscar préstamos para financiar'" [type]="'number'"></app-input>
+        <app-button [text]="'Buscar'" [primary]="true" (click)="onSubmit()" [disabled]="!searchForm.valid || searchFilterText===''" ></app-button>
+        <app-button (onSelectDropdownOption)="selectFilterOption($event)" [text]="'Filtrar'" [primary]="false" [dropdown]="true" [dropdownValues]="filterOptions"></app-button>
     </div>
+    <p class="container-filter">Filtrar por: <span>{{searchFilterText}}</span></p>
     <app-card-group [data]="data"></app-card-group>
+    <h2 class="container-no-results" *ngIf="data.length === 0">No hay préstamos que mostrar</h2>
 </div>

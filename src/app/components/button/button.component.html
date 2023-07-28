@@ -1,4 +1,10 @@
 <button [disabled]="disabled"
-        [ngClass]="{'primary-button' : primary, 'secondary-button': !primary, 'underline': underline, 'large-button': large, 'disabled': disabled}"
+        (click)="openDropdown()" 
+        [ngClass]="{'primary-button' : primary, 'secondary-button': !primary, 'underline': underline, 'large-button': large, 'disabled': disabled, 'dropdown-button': dropdown}"
         [ngStyle]="{'text-decoration': (underline) ? 'underline' : 'none'}">{{text}}
 </button>
+<div #dropdownContent class="dropdown-content" *ngIf="showDropdown">
+        <span (click)="selectDropdownOption(element)" class="dropdown-option" *ngFor="let element of dropdownValues">
+                {{element.text}}
+        </span>
+</div>
