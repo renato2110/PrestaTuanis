@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PRESTAMISTA_PROFILE_PATH, PRESTATARIO_PROFILE_PATH } from '../../app-routing.module';
+import { PRESTAMISTA_PROFILE_PATH, PRESTATARIO_PROFILE_PATH, SELECT_PROFILE_PATH } from '../../app-routing.module';
 import { db } from "../../database/db";
 import { AuthenticationService } from "../../../service/authentication";
 
@@ -31,17 +31,26 @@ export class LoginComponent {
   async onSubmit() {
     const { email, password } = this.loginForm.value;
 
+    console.log('Email: ', email, 'Password: ', password);
+
     // Obtener el usuario de la base de datos basado en el correo electrónico y contraseña ingresados
     const user = await db.users.get({ email: email, password: password });
 
+    console.log('Usuario encontrado1: ', user)
+
     if (user) {
+      console.log('Usuario encontrado2: ', user)
       // El usuario existe, establecerlo como usuario actual en el servicio de autenticación
       this.authService.setCurrentUser(user);
-      if (user.isPrestamista) {
-        // Redirigir a la página de perfil del Prestamista
+
+      if (user.isPrestamista && user.isPrestatario) {
+        // Both roles present, redirect to profile selection
+        this.router.navigate([`/${SELECT_PROFILE_PATH}`]);
+      } else if (user.isPrestamista) {
+        // Only Prestamista role present, redirect to Prestamista profile
         this.router.navigate([`/${PRESTAMISTA_PROFILE_PATH}`]);
       } else if (user.isPrestatario) {
-        // Redirigir a la página de perfil del Prestatario
+        // Only Prestatario role present, redirect to Prestatario profile
         this.router.navigate([`/${PRESTATARIO_PROFILE_PATH}`]);
       }
     } else {
@@ -49,6 +58,7 @@ export class LoginComponent {
       this.errorMessage = 'Credenciales inválidas. Por favor intente de nuevo o regístrese si no tiene una cuenta.';
     }
   }
+
 
   forgotPassword() {
     console.log('Click en Olvidó la contraseña');
