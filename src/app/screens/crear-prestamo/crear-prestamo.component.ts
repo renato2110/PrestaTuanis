@@ -29,7 +29,7 @@ export class CrearPrestamoComponent {
     this.creationForm = this.fb.group({
       amount: [, Validators.required],
       description: ['', Validators.required],
-      image: [],
+      image: [, Validators.required],
       months: [, Validators.required],
       purpose: [, Validators.required],
       tax: [, Validators.required]
@@ -45,23 +45,31 @@ export class CrearPrestamoComponent {
   }
 
   async redirectToPrestamo() {
-    const { amount, tax, months, image } = this.creationForm.value;
+    const { amount, tax, months } = this.creationForm.value;
     const currentUser = this.authService.getCurrentUser();
     if (currentUser) {
       const prestatario = await db.users.get({ email: currentUser.email, password: currentUser.password });
       if (prestatario) {
-        const newLoan = await db.loans.add({
-          title: "Nuevo prestamo de " + prestatario.name,
-          amount: Number(amount),
-          tax: Number(tax),
-          months: Number(months),
-          solicitedDate: new Date(),
-          monthlyPayment: this.payment,
-          risk: this.probability,
-          img: image,
-          prestatario
-        });
-        this.router.navigateByUrl(`prestamo?id=${newLoan}`);
+
+        const reader = new FileReader();
+        let image;
+        reader.readAsDataURL(this.fileSelected);
+        reader.onload = async () => {
+          image = reader.result as string;
+          const newLoan = await db.loans.add({
+            title: "Nuevo prestamo de " + prestatario.name,
+            amount: Number(amount),
+            tax: Number(tax),
+            months: Number(months),
+            solicitedDate: new Date(),
+            monthlyPayment: this.payment,
+            risk: this.probability,
+            img: image,
+            prestatario
+          });
+          this.router.navigateByUrl(`prestamo?id=${newLoan}`);
+        };
+
       }
     }
   }
