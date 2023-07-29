@@ -8,6 +8,7 @@
             <p><span>Periodo:</span>{{months}} meses</p>
             <p><span>Fecha de solicitud:</span>{{solicitedDate}}</p>
             <p><span>Riesgo calculado por PrestaTuanis:</span>{{risk}}%</p>
+            <p *ngIf="loan?.prestamista"><span>Prestamista:</span>{{loan?.prestamista?.name}}</p>
         </div>
         <div class="card">
             <h2>Información prestatario</h2>
@@ -20,8 +21,8 @@
             <span>{{userEmail}}</span>
         </div>
     </div>
-    <div class="container-button">
-        <app-button [text]="'Financiar'" [primary]="true" [large]="true"></app-button>
+    <div class="container-button" *ngIf="showButton">
+        <app-button [text]="'Financiar'" [primary]="true" (click)="financiar()" [large]="true"></app-button>
     </div>
     <div class="card">
         <h3>Documentos</h3>
