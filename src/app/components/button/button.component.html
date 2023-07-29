@@ -4,7 +4,7 @@
         [ngStyle]="{'text-decoration': (underline) ? 'underline' : 'none'}">{{text}}<span *ngIf="dropdown"></span>
 </button>
 <div #dropdownContent class="dropdown-content" *ngIf="showDropdown">
-        <span (click)="selectDropdownOption(element)" class="dropdown-option" *ngFor="let element of dropdownValues">
+        <a (click)="selectDropdownOption(element)" class="dropdown-option" *ngFor="let element of dropdownValues">
                 {{element.text}}
-        </span>
+        </a>
 </div>

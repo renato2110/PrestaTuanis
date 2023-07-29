@@ -59,9 +59,10 @@ button {
     box-shadow: var(--shadow);
     display: grid;
 
-    span {
+    a {
         padding: 12px 16px;
         display: block;
+        text-decoration: none;
 
         &:hover {
             background-color: var(--dark-background);

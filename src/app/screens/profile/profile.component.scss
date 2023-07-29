@@ -1,7 +1,13 @@
 .container {
   display: flex;
-  padding: 1em;
-  align-content: space-evenly;
+  max-width: 90%;
+  margin: 40px auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  form {
+    width: 45%;
+  }
 }
 
 .input-container {
@@ -10,32 +16,24 @@
   gap: 20px;
 }
 
-.profile {
-  width: 65%;
-}
-
 .loans {
-  width: auto;
+  width: 45%;
   border: var(--thick-border);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
   padding: 12px 16px;
-  margin-left: 3em;
   background-color: var(--background);
   color: var(--primary-text);
 }
 
 .button-group {
-  display: flex;
-  justify-content: flex-end;
+  display: grid;
   width: 45em;
-  align-items: center;
   gap: 1em;
 }
 
 .button-group p {
   flex-grow: 1;
-  text-align: right;
   margin: 0;
 }
 

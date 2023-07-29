@@ -11,8 +11,8 @@
         <app-input *ngIf="profileType === 'Prestatario'" formControlName="companyName" [label]="'Nombre de la empresa'" [placeholder]="'Introduzca el nombre de la empresa'"></app-input>
         <app-input *ngIf="profileType === 'Prestatario'" formControlName="companyId" [label]="'Cédula Jurídica'" [placeholder]="'Introduzca la cédula jurídica de su empresa'" pattern="^[0-9]{9}$" [patternExample]="'123456789'"></app-input>
         <div class="button-group">
-          <app-button [text]="'Guardar cambios'" [primary]="true" (click)="onSubmit()"></app-button>
           <p>Todos los campos son requeridos para aplicar a préstamos.</p>
+          <app-button [text]="'Guardar cambios'" [primary]="true" (click)="onSubmit()"></app-button>
         </div>
       </div>
     </div>
@@ -21,7 +21,7 @@
   <div class="loans">
     <h1>{{ profileType === PRESTAMISTA ? 'Préstamos financiados' : 'Préstamos solicitados' }}</h1>
     <div class="loan-summaries">
-      <app-loan-summary *ngFor="let loan of loans" [title]="loan.title" [loanAmount]="loan.loanAmount"
+      <app-loan-summary *ngFor="let loan of loans" [title]="loan.title" [loanAmount]="loan.loanAmount" [id]="loan.id"
                         [interestRate]="loan.interestRate"></app-loan-summary>
     </div>
   </div>
