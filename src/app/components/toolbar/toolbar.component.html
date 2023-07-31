@@ -3,7 +3,7 @@
   <img
     class="toolbar-img"
     alt="PrestaTuanis Logo"
-    src="../../../favicon.ico"
+    src="../../../assets/logo.png"
   />
   <ng-container *ngIf="!authenticated; else authenticatedMenu">
     <a tabindex="1" *ngIf="!authService.getOnLoginPage()" class="toolbar-link" [routerLink]="['/'+LOGIN_PATH]">

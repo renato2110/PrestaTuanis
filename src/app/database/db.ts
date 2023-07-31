@@ -14,6 +14,7 @@ export interface Loan {
   img?: string;
   prestamista?: User;
   prestatario: User;
+  description?: string;
 }
 
 export interface User {

@@ -45,7 +45,7 @@ export class CrearPrestamoComponent {
   }
 
   async redirectToPrestamo() {
-    const { amount, tax, months } = this.creationForm.value;
+    const { amount, tax, months, description } = this.creationForm.value;
     const currentUser = this.authService.getCurrentUser();
     if (currentUser) {
       const prestatario = await db.users.get({ email: currentUser.email, password: currentUser.password });
@@ -65,7 +65,8 @@ export class CrearPrestamoComponent {
             monthlyPayment: this.payment,
             risk: this.probability,
             img: image,
-            prestatario
+            prestatario,
+            description: description,
           });
           this.router.navigateByUrl(`prestamo?id=${newLoan}`);
         };

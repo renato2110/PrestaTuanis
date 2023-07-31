@@ -25,6 +25,7 @@ export class PrestamoComponent {
     status: string = '';
     currentUser: User | null = null;
     showButton: boolean = false;
+    description: string = '';
 
     async ngOnInit() {
       this.currentUser = this.authService.getCurrentUser();
@@ -42,9 +43,9 @@ export class PrestamoComponent {
           this.userName = this.loan.prestatario.name;
           this.userAddress = this.loan.prestatario.address;
           this.userEmail = this.loan.prestatario.email;
-          this.status = this.loan.prestamista ? 'En solicitud' : 'Financiado';
-
-          this.showButton = !this.loan.prestamista;
+          this.status = this.loan.prestamista ? 'Financiado' : 'Abierto';
+          this.description = this.loan.description ? this.loan.description : 'Sin Descripción';
+          this.showButton = this.loan.prestatario.id !== this.currentUser?.id && !this.loan.prestamista;
         }
       }
     }

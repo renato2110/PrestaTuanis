@@ -1,16 +1,16 @@
 <div class="container" [formGroup]="loginForm">
   <h1>Iniciar Sesión</h1>
 
-  <app-input formControlName="email" [label]="'Correo Electronico'" [placeholder]="'Introduzca su correo'" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [patternExample]="'ejemplo@dominio.com'"></app-input>
+  <app-input [tabindex]="2" formControlName="email" [label]="'Correo Electronico'" [placeholder]="'Introduzca su correo'" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [patternExample]="'ejemplo@dominio.com'"></app-input>
 
-  <app-input formControlName="password" [label]="'Contraseña'" [placeholder]="'Introduzca su contraseña'" [type]="'password'"></app-input>
+  <app-input [tabindex]="3" formControlName="password" [label]="'Contraseña'" [placeholder]="'Introduzca su contraseña'" [type]="'password'"></app-input>
   <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">Digite una contraseña</div>
 
-  <app-checkbox formControlName="rememberMe" [label]="'Recordar mi correo'"></app-checkbox>
+  <app-checkbox [tabindex]="4" formControlName="rememberMe" [label]="'Recordar mi correo'"></app-checkbox>
 
-  <app-button [disabled]="!loginForm.valid" (click)="onSubmit()" [text]="'Iniciar sesión'" [primary]="true" [large]="true"></app-button>
+  <app-button [tabindex]="5" [disabled]="!loginForm.valid" (click)="onSubmit()" [text]="'Iniciar sesión'" [primary]="true" [large]="true"></app-button>
 
   <div class="error-message" *ngIf="errorMessage">{{errorMessage}}</div>
 
-  <a (click)="forgotPassword()">Olvidé mi contraseña</a>
+  <a tabindex="5" (click)="forgotPassword()">Olvidé mi contraseña</a>
 </div>
