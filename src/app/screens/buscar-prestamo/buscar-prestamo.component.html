@@ -1,9 +1,9 @@
 <div class="container">
     <h1>Buscar Préstamo</h1>
     <div class="container-search" [formGroup]="searchForm">
-        <app-input formControlName="searchValue" [placeholder]="'Buscar préstamos para financiar'" [type]="'number'"></app-input>
-        <app-button [text]="'Buscar'" [primary]="true" (click)="onSubmit()" [disabled]="!searchForm.valid || searchFilterText===''" ></app-button>
-        <app-button (onSelectDropdownOption)="selectFilterOption($event)" [text]="'Filtrar'" [primary]="false" [dropdown]="true" [dropdownValues]="filterOptions"></app-button>
+        <app-input [tabindex]="8" (keyup.enter)="onSubmit()" formControlName="searchValue" [placeholder]="'Buscar préstamos para financiar'" [type]="'number'"></app-input>
+        <app-button [tabindex]="9"[text]="'Buscar'" [primary]="true" (click)="onSubmit()" [disabled]="!searchForm.valid || searchFilterText===''" ></app-button>
+        <app-button [tabindex]="10" (onSelectDropdownOption)="selectFilterOption($event)" [text]="'Filtrar'" [primary]="false" [dropdown]="true" [dropdownValues]="filterOptions"></app-button>
     </div>
     <p class="container-filter">Filtrar por: <span>{{searchFilterText}}</span></p>
     <app-card-group [data]="data"></app-card-group>

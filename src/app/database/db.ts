@@ -88,9 +88,6 @@ export class AppDB extends Dexie {
 
     const prestatarioWhoIsAlsoPrestamistaId = await db.users.add(prestatarioWhoIsAlsoPrestamista);
 
-    console.log('prestamistaId: ', prestatarioWhoIsAlsoPrestamistaId);
-
-
     // Populate loans
     const loanId = await db.loans.add({
       id: 1,

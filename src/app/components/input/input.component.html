@@ -1,7 +1,7 @@
 <div class="input-field" [ngClass]="{'active': active, 'invalid': formControl.invalid && formControl.touched}">
   <label>{{label}}</label>
-  <input *ngIf="!textArea" [type]="type" [value]="value" [formControl]="formControl" (input)="updateValue($event)" [placeholder]="placeholder" (focus)="activate()" (blur)="deactivate()">
-  <textarea *ngIf="textArea" [value]="value" (input)="updateValue($event)" [placeholder]="placeholder" (focus)="activate()" (blur)="deactivate()">
+  <input [tabindex]="tabindex" *ngIf="!textArea" [type]="type" [value]="value" [formControl]="formControl" (input)="updateValue($event)" [placeholder]="placeholder" (focus)="activate()" (blur)="deactivate()">
+  <textarea *ngIf="textArea" [tabindex]="tabindex" [value]="value" (input)="updateValue($event)" [placeholder]="placeholder" (focus)="activate()" (blur)="deactivate()">
   </textarea>
   <div class="error-message" *ngIf="formControl.invalid && formControl.touched">
     Formato invalido. Ejemplo de formato válido: {{patternExample}}

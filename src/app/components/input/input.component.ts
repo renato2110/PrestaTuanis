@@ -20,6 +20,7 @@ export class InputComponent implements ControlValueAccessor {
   @Input() textArea: boolean = false;
   @Input() pattern: string = '';
   @Input() patternExample: string = '';
+  @Input() tabindex: number = 0;
   value: string = '';
   active: boolean = false;
 

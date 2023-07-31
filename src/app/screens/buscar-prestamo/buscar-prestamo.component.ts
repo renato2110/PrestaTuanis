@@ -17,15 +17,18 @@ export class BuscarPrestamoComponent {
   searchFilterText: string = '';
   filterOptions: DropdownValue[] = [{
     id: 'amount',
-    text: 'Monto solicitado'
+    text: 'Monto solicitado',
+    tabindex: 11,
   },
   {
     id: 'tax',
-    text: 'Tasa de interés'
+    text: 'Tasa de interés',
+    tabindex: 12,
   },
   {
     id: 'months',
-    text: 'Periodo (meses)'
+    text: 'Periodo (meses)',
+    tabindex: 13,
   }]
 
   async ngOnInit() {
@@ -41,11 +44,13 @@ export class BuscarPrestamoComponent {
   }
 
   async onSubmit() {
-    let obj = {
-      [this.searchFilter]: Number(this.searchForm.value.searchValue)
-    };
-    const loans = await db.loans.where(obj).toArray();
-    this.data = loans;
+    if (this.searchForm.valid && this.searchFilterText!=='') {
+      let obj = {
+        [this.searchFilter]: Number(this.searchForm.value.searchValue)
+      };
+      const loans = await db.loans.where(obj).toArray();
+      this.data = loans;
+    }
   }
 
   selectFilterOption(value: DropdownValue) {

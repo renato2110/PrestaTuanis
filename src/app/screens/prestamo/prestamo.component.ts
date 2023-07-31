@@ -32,8 +32,6 @@ export class PrestamoComponent {
       const id = Number(this.activatedRoute.snapshot.queryParams['id']);
       if (id) {
         this.loan = await db.loans.get({ id });
-        console.log(this.loan?.prestamista);
-        console.log(this.currentUser?.id);
         if (this.loan && this.loan.id) {
           this.id = this.loan.id;
           this.amount = this.loan.amount;

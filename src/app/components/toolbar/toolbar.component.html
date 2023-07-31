@@ -6,10 +6,10 @@
     src="../../../favicon.ico"
   />
   <ng-container *ngIf="!authenticated; else authenticatedMenu">
-    <a *ngIf="!authService.getOnLoginPage()" class="toolbar-link" [routerLink]="['/'+LOGIN_PATH]">
+    <a tabindex="1" *ngIf="!authService.getOnLoginPage()" class="toolbar-link" [routerLink]="['/'+LOGIN_PATH]">
       Iniciar Sesión
     </a>
-    <a *ngIf="authService.getOnLoginPage()" class="toolbar-link" [routerLink]="['/'+SIGN_UP_PATH]">
+    <a tabindex="1" *ngIf="authService.getOnLoginPage()" class="toolbar-link" [routerLink]="['/'+SIGN_UP_PATH]">
       Registrarse
     </a>
   </ng-container>
@@ -17,20 +17,17 @@
   <span class="toolbar-title">PrestaTuanis</span>
 
   <ng-template #authenticatedMenu>
-    <button class="hamburger-menu" (click)="toggleMenu()">☰</button>
+    <button class="hamburger-menu" (click)="toggleMenu()" tabindex="1">☰</button>
 
     <div class="menu-overlay" *ngIf="menuOpen">
-      <a [routerLink]="['/'+PRESTAMISTA_PROFILE_PATH]" (click)="toggleMenu()">Mi Perfil de Prestamista</a>
-      <a [routerLink]="['/'+PRESTATARIO_PROFILE_PATH]" (click)="toggleMenu()">Mi Perfil de Prestatario</a>
+      <!--      Añadir logica para que cambien-->
+      <a tabindex="2"[routerLink]="['/'+PRESTAMISTA_PROFILE_PATH]" (click)="toggleMenu()">Mi Perfil de Prestamista</a>
+      <a tabindex="3" [routerLink]="['/'+PRESTATARIO_PROFILE_PATH]" (click)="toggleMenu()">Mi Perfil de Prestatario</a>
       <!--      Añadir logica para que estos no esten y cuando !authenticated si esten-->
-      <a [routerLink]="['/'+SIGN_UP_PATH]" (click)="toggleMenu()">Registrarse (temp)</a>
-      <a [routerLink]="['/'+LOGIN_PATH]" (click)="toggleMenu()">Login (temp)</a>
-      <a [routerLink]="['/'+SELECT_PROFILE_PATH]" (click)="toggleMenu()">Seleccionar Perfil (temp)</a>
-      <!--     Falta crearlos -->
-      <a [routerLink]="['/buscar-prestamo']" (click)="toggleMenu()">Buscar Préstamo</a>
-      <a [routerLink]="['/crear-prestamo']" (click)="toggleMenu()">Crear Préstamo</a>
-      <a [routerLink]="['/ayuda']" (click)="toggleMenu()">Soporte al cliente</a>
-      <a (click)="logout()">Cerrar Sesión</a>
+      <a tabindex="4" [routerLink]="['/'+SELECT_PROFILE_PATH]" (click)="toggleMenu()">Seleccionar Perfil</a>
+      <a tabindex="5" [routerLink]="['/buscar-prestamo']" (click)="toggleMenu()">Buscar Préstamo</a>
+      <a tabindex="6" [routerLink]="['/crear-prestamo']" (click)="toggleMenu()">Crear Préstamo</a>
+      <a tabindex="7" [routerLink]="['/'+LOGIN_PATH]" (click)="logout()">Cerrar Sesión</a>
     </div>
   </ng-template>
 </div>

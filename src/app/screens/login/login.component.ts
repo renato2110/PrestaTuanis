@@ -31,15 +31,10 @@ export class LoginComponent {
   async onSubmit() {
     const { email, password } = this.loginForm.value;
 
-    console.log('Email: ', email, 'Password: ', password);
-
     // Obtener el usuario de la base de datos basado en el correo electrónico y contraseña ingresados
     const user = await db.users.get({ email: email, password: password });
 
-    console.log('Usuario encontrado1: ', user)
-
     if (user) {
-      console.log('Usuario encontrado2: ', user)
       // El usuario existe, establecerlo como usuario actual en el servicio de autenticación
       this.authService.setCurrentUser(user);
 
@@ -61,6 +56,6 @@ export class LoginComponent {
 
 
   forgotPassword() {
-    console.log('Click en Olvidó la contraseña');
+    alert('Función no implementada');
   }
 }

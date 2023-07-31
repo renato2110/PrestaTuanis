@@ -25,9 +25,7 @@ export class ProfileComponent {
 
 
   // Load loans from db
-  loans: LoanSummary[]  = [
-    { title: 'Préstamo para Capital de Trabajo', loanAmount: 5000, interestRate: 8.2, id: 1 },
-  ];
+  loans: LoanSummary[]  = [];
 
 
   profileForm: FormGroup;
@@ -67,23 +65,28 @@ export class ProfileComponent {
         });
 
         // Load loans from db
-        if (this.profileType === 'Prestamista') {
-          const loansFromDb = await db.loans.where('prestamista.id').equals(currentUser.id!).toArray();
-          this.loans = loansFromDb.map(loan => ({
-            title: loan.title,
-            loanAmount: loan.amount,
-            interestRate: loan.tax,
-            id: loan.id
-          }));
-        } else if (this.profileType === 'Prestatario') {
-          const loansFromDb = await db.loans.where('prestatario.id').equals(currentUser.id!).toArray();
-          this.loans = loansFromDb.map(loan => ({
-            title: loan.title,
-            loanAmount: loan.amount,
-            interestRate: loan.tax,
-            id: loan.id
-          }));
-        }
+        const loansFromDb = await db.loans.toArray();
+        loansFromDb.forEach(loan => {
+          if (this.profileType === 'Prestamista') {
+            if (currentUser.id === loan.prestamista?.id) {
+              this.loans.push({
+                title: loan.title,
+                loanAmount: loan.amount,
+                interestRate: loan.tax,
+                id: loan.id
+              });
+            }
+          } else if (this.profileType === 'Prestatario') {
+            if (currentUser.id === loan.prestatario?.id) {
+              this.loans.push({
+                title: loan.title,
+                loanAmount: loan.amount,
+                interestRate: loan.tax,
+                id: loan.id
+              });
+            }
+          }
+        });
       }
     });
   }
@@ -91,14 +94,11 @@ export class ProfileComponent {
 
 
   async onSubmit() {
-    console.log(this.profileForm.value, this.profileForm.valid);
     if (this.profileForm.valid) {
       const updatedUser = {
         ...this.authService.getCurrentUser(), // get the current user details
         ...this.profileForm.value // overwrite with the updated values from the form
       };
-
-      console.log('updatedUser',updatedUser);
 
       // Update the user in the database
       await db.users.update(updatedUser.id!, updatedUser);

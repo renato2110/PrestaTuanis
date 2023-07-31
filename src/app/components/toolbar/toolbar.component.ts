@@ -28,12 +28,11 @@ export class ToolbarComponent {
   }
 
   logout() {
-    console.log('Logout clicked');
     this.authService.logout();
-    this.router.navigate([`/${LOGIN_PATH}`]);
   }
 
   @HostListener('document:click', ['$event'])
+  @HostListener('document:keydown.escape', ['$event'])
   clickout(event: Event) {
     if (!this._eref.nativeElement.contains(event.target)) {
       this.menuOpen = false;

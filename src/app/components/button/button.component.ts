@@ -3,6 +3,7 @@ import { Component, EventEmitter, HostListener, Input, Output } from '@angular/c
 export interface DropdownValue {
   id: string;
   text: string;
+  tabindex: number;
 }
 
 @Component({
@@ -16,6 +17,7 @@ export class ButtonComponent {
   @Input() underline: boolean = false;
   @Input() large: boolean = false;
   @Input() disabled: boolean = false;
+  @Input() tabindex: number = 0;
 
   @Input() dropdown: boolean = false;
   @Input() dropdownValues: DropdownValue[] = [];
@@ -28,6 +30,7 @@ export class ButtonComponent {
 
   selectDropdownOption(event: DropdownValue) {
     this.onSelectDropdownOption.emit(event);
+    this.showDropdown = false;
   }
   
   @HostListener('document:click', ['$event'])

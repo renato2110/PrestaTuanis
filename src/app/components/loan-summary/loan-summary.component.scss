@@ -3,17 +3,21 @@
   justify-content: space-between;
   align-items: center;
   padding: 1em;
-  background-color: var(--background);
+  background-color: var(--secondary-text);
   border-radius: 0.5em;
   margin: 1em;
+  border: var(--thick-border);
+  box-shadow: var(--shadow);
 }
 
 .loan-info {
   & h3, & p {
     margin: 0;
   }
+  padding: 12px;
 }
 
 .loan-details {
   text-align: right;
+  width: 30%;
 }
