@@ -1,9 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/database/db';
 
 export interface Prestamo {
   id?: number;
   amount: number;
+  prestamista?: User;
   tax: number;
   months: number;
   img?: string;

@@ -12,7 +12,7 @@
         <app-input *ngIf="profileType === 'Prestatario'" formControlName="companyId" [label]="'Cédula Jurídica'" [placeholder]="'Introduzca la cédula jurídica de su empresa'" pattern="^[0-9]{9}$" [patternExample]="'123456789'"></app-input>
         <div class="button-group">
           <p>Todos los campos son requeridos para aplicar a préstamos.</p>
-          <app-button [text]="'Guardar cambios'" [primary]="true" (click)="onSubmit()"></app-button>
+          <app-button [disabled]="!profileForm.valid" [text]="'Guardar cambios'" [primary]="true" (click)="onSubmit()"></app-button>
         </div>
       </div>
     </div>

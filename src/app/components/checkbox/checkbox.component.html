@@ -1,5 +1,5 @@
 <div class="checkbox-field" [ngClass]="{'right': right}" (click)="toggleCheckbox()" (keyup.enter)="toggleCheckbox()">
-  <input type="checkbox" id="checkbox" [checked]="value">
+  <input [tabindex]="tabindex" type="checkbox" id="checkbox" [checked]="value">
   <label for="checkbox">{{label}}</label>
   <a *ngIf="link">{{link}}</a>
 </div>

@@ -1,8 +1,7 @@
 <div class="container" [formGroup]="loginForm">
   <h1>Iniciar Sesión</h1>
 
-  <app-input formControlName="email" [label]="'Correo'" [placeholder]="'Introduzca su correo'"></app-input>
-  <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">Correo invalido</div>
+  <app-input formControlName="email" [label]="'Correo Electronico'" [placeholder]="'Introduzca su correo'" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [patternExample]="'ejemplo@dominio.com'"></app-input>
 
   <app-input formControlName="password" [label]="'Contraseña'" [placeholder]="'Introduzca su contraseña'" [type]="'password'"></app-input>
   <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">Digite una contraseña</div>

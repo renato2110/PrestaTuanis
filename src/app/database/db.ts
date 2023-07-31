@@ -64,7 +64,7 @@ const prestamista = {
   address: '123 Street, City, Province',
   password: 'password1',
   isPrestamista: true,
-  isPrestatario: false
+  isPrestatario: true
 };
 
 export class AppDB extends Dexie {
@@ -73,9 +73,9 @@ export class AppDB extends Dexie {
 
   constructor() {
     super('ngdexieliveQuery');
-    this.version(3).stores({
+    this.version(6).stores({
       users: '++id, email',
-      loans: '++id, id, prestatario.id, prestamista.id',
+      loans: '++id, id, prestatario.id, prestamista.id, amount, months, tax',
     });
     this.on('populate', () => this.populate());
   }

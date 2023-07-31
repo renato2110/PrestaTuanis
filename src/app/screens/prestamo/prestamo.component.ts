@@ -44,7 +44,7 @@ export class PrestamoComponent {
           this.userEmail = this.loan.prestatario.email;
           this.status = this.loan.prestamista ? 'En solicitud' : 'Financiado';
 
-          this.showButton = !!this.currentUser?.isPrestamista && this.currentUser.id !== this.loan.prestamista?.id;
+          this.showButton = !this.loan.prestamista;
         }
       }
     }

@@ -13,33 +13,37 @@ export class BuscarPrestamoComponent {
   searchForm: FormGroup;
 
   data: Prestamo[] = [];
+  filteredData: Prestamo[] = [];
   searchFilter: string = '';
   searchFilterText: string = '';
+  sinPrestamistas: boolean = false;
   filterOptions: DropdownValue[] = [{
     id: 'amount',
     text: 'Monto solicitado',
-    tabindex: 11,
+    tabindex: 12,
   },
   {
     id: 'tax',
     text: 'Tasa de interés',
-    tabindex: 12,
+    tabindex: 13,
   },
   {
     id: 'months',
     text: 'Periodo (meses)',
-    tabindex: 13,
+    tabindex: 14,
   }]
 
   async ngOnInit() {
     const loans = await db.loans.toArray();
     if (loans) {
       this.data = loans;
+      this.filteredData = this.data;
     }
   }
   constructor(private fb: FormBuilder) {
     this.searchForm = this.fb.group({
       searchValue: [, Validators.required],
+      sinPrestamistas: [],
     });
   }
 
@@ -50,12 +54,25 @@ export class BuscarPrestamoComponent {
       };
       const loans = await db.loans.where(obj).toArray();
       this.data = loans;
+      this.filterData();
     }
   }
 
   selectFilterOption(value: DropdownValue) {
     this.searchFilter = value.id;
     this.searchFilterText = value.text;
+    this.onSubmit();
+  }
 
+  filterData() {
+    const sinPrestamistas = this.searchForm.value.sinPrestamistas;
+    if (sinPrestamistas) {
+      this.filteredData = this.filteredData.filter((loan) =>
+        !loan.prestamista
+      );
+    }
+    else {
+      this.filteredData = this.data;
+    }
   }
 }

@@ -6,15 +6,17 @@
     }
 
     &-search {
-        app-input {
-            width: 70%;
+        .controls {
+            app-input {
+                width: 70%;
+            }
+            app-button  {
+                margin-left: 20px;
+            }
+            display: flex;
+            max-width: 60%;
+            align-items: flex-end;
         }
-        app-button  {
-            margin-left: 20px;
-        }
-        display: flex;
-        max-width: 60%;
-        align-items: flex-end;
     }
 
     &-filter span{

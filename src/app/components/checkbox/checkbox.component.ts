@@ -17,6 +17,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   @Input() label: string = '';
   @Input() right: boolean = false;
   @Input() link: string = '';
+  @Input() tabindex: number = 0;
   value: boolean = false;
 
   private onChange = (value: boolean) => {};
