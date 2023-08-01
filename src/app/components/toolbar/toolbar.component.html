@@ -4,6 +4,7 @@
     class="toolbar-img"
     alt="PrestaTuanis Logo"
     src="../../../assets/logo.png"
+    alt="Imagen animada de un billete"
   />
   <ng-container *ngIf="!authenticated; else authenticatedMenu">
     <a tabindex="1" *ngIf="!authService.getOnLoginPage()" class="toolbar-link" [routerLink]="['/'+LOGIN_PATH]">
