@@ -1,8 +1,8 @@
 <button [disabled]="disabled"
         (click)="openDropdown()" 
         [tabindex]="tabindex"
-        [ngClass]="{'primary-button' : primary, 'secondary-button': !primary, 'underline': underline, 'large-button': large, 'disabled': disabled, 'dropdown-button': dropdown, 'show-dropdown': showDropdown}"
-        [ngStyle]="{'text-decoration': (underline) ? 'underline' : 'none'}">{{text}}<span *ngIf="dropdown"></span>
+        [ngClass]="{'primary-button' : primary, 'secondary-button': !primary, 'large-button': large, 'disabled': disabled, 'dropdown-button': dropdown, 'show-dropdown': showDropdown}">
+        {{text}}<span *ngIf="dropdown"></span>
 </button>
 <div #dropdownContent class="dropdown-content" *ngIf="showDropdown">
         <a [tabindex]="element.tabindex" (click)="selectDropdownOption(element)" (keyup.enter)="selectDropdownOption(element)" class="dropdown-option" *ngFor="let element of dropdownValues">

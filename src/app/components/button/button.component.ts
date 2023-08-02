@@ -14,7 +14,6 @@ export interface DropdownValue {
 export class ButtonComponent {
   @Input() text: string = '';
   @Input() primary: boolean = false;
-  @Input() underline: boolean = false;
   @Input() large: boolean = false;
   @Input() disabled: boolean = false;
   @Input() tabindex: number = 0;

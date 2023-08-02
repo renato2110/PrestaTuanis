@@ -45,7 +45,7 @@ export class CrearPrestamoComponent {
   }
 
   async redirectToPrestamo() {
-    const { amount, tax, months, description } = this.creationForm.value;
+    const { amount, tax, months, description, purpose } = this.creationForm.value;
     const currentUser = this.authService.getCurrentUser();
     if (currentUser) {
       const prestatario = await db.users.get({ email: currentUser.email, password: currentUser.password });
@@ -57,7 +57,7 @@ export class CrearPrestamoComponent {
         reader.onload = async () => {
           image = reader.result as string;
           const newLoan = await db.loans.add({
-            title: "Nuevo prestamo de " + prestatario.name,
+            title: purpose,
             amount: Number(amount),
             tax: Number(tax),
             months: Number(months),
