@@ -29,7 +29,7 @@ export class CrearPrestamoComponent {
     this.creationForm = this.fb.group({
       amount: [, Validators.required],
       description: ['', Validators.required],
-      image: [, Validators.required],
+      image: [],
       months: [, Validators.required],
       purpose: [, Validators.required],
       tax: [, Validators.required]
@@ -56,6 +56,7 @@ export class CrearPrestamoComponent {
         reader.readAsDataURL(this.fileSelected);
         reader.onload = async () => {
           image = reader.result as string;
+          image = image === 'data:application/octet-stream;base64,'? undefined : image;
           const newLoan = await db.loans.add({
             title: purpose,
             amount: Number(amount),

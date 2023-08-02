@@ -9,6 +9,7 @@ export interface Prestamo {
   tax: number;
   months: number;
   img?: string;
+  title: string;
 }
 
 @Component({

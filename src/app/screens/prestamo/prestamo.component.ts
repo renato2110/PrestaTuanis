@@ -25,6 +25,7 @@ export class PrestamoComponent {
     status: string = '';
     currentUser: User | null = null;
     showButton: boolean = false;
+    title: string = '';
     description: string = '';
 
     async ngOnInit() {
@@ -45,6 +46,7 @@ export class PrestamoComponent {
           this.userEmail = this.loan.prestatario.email;
           this.status = this.loan.prestamista ? 'Financiado' : 'Abierto';
           this.description = this.loan.description ? this.loan.description : 'Sin Descripción';
+          this.title = this.loan.title ? this.loan.title : '';
           this.showButton = this.loan.prestatario.id !== this.currentUser?.id && !this.loan.prestamista;
         }
       }

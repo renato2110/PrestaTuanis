@@ -13,7 +13,7 @@
         </div>
         <div class="upload-img">
             <div class="upload-img-preview">
-                <img #imagePreview alt="Imagen previa">
+                <img #imagePreview alt="Imagen descriptiva del préstamo">
             </div>
             <input formControlName="image" type="file" #inputFileUploaded (change)="handleFileChanged()" accept="image/png, image/gif, image/jpeg">
             <app-button (click)="handleUploadLinkClick()" [text]="'Subir imagen'"></app-button>
@@ -32,7 +32,7 @@
         </div>
         <div class="container-details-graphic">
             <h3>Interés mensual</h3>
-            <app-graph [data]="graphData"></app-graph>
+            <app-graph [data]="graphData" alt="Gráfico con los interéses mensuales"></app-graph>
         </div>
     </div>
 
