@@ -3,7 +3,7 @@
     <div class="card" *ngFor="let element of data;">
         <div class="card-details">
             <img *ngIf="element.img" [src]="element.img" alt="Foto descriptiva de un prestamo">
-            <img *ngIf="!element.img" src="../../../assets/logo.png" alt="Logo de prestatuanis">
+            <img *ngIf="!element.img" src="assets/logo.png" alt="Logo de prestatuanis">
             <h3>{{element.title}}</h3>
         </div>
         <div class="card-details">
