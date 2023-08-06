@@ -17,6 +17,10 @@
             max-width: 60%;
             align-items: flex-end;
         }
+
+        .labels p {
+            color: var(--primary-text);
+        }
     }
 
     &-filter span{

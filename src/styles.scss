@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-:root {
+body {
     --light-primary: #F1A340;
     --dark-primary: #E66001;
     --light-secondary: #998EC3;
@@ -21,27 +21,28 @@
     --border-radius: 0.4em;
     --shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
+    background-color: var(--secondary-text);
+    margin: 0px;
+
     * {
         font-family: var(--font-family);
         letter-spacing: var(--letter-spacing);
         font-size: 16px;
     }
 
-    body {
-        background-color: var(--secondary-text);
-        margin: 0px;
-    }
-
     h1 {
         font-size: 32px;
+        color: var(--primary-text);
     }
 
     h2 {
         font-size: 24px;
+        color: var(--primary-text);
     }
 
     h3, button {
         font-size: 20px;
+        color: var(--primary-text);
     }
 
     a {
